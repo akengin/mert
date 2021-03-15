@@ -13,3 +13,6 @@
 [submodule "modern-normalize"]
 	path = modern-normalize
 	url = https://github.com/sindresorhus/modern-normalize.git
+[submodule "icons.css"]
+	path = icons
+	url = https://github.com/picturepan2/icons.css.git

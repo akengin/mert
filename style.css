@@ -44,6 +44,35 @@ main#content .tile .tile-title {
 	margin: auto;
 }
 
+main#content img {
+	margin: 0;
+	padding: 0;
+	max-width: 67vw;
+	max-height: 67vh;
+}
+
+main#content img:active {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+	width: auto;
+	height: auto;
+	max-width: 100%;
+	max-height: 100%;
+	vertical-align: middle;
+	z-index: 99;
+}
+
+main#content hr {
+	box-sizing: border-box;
+	border: .05rem solid #dadee4;
+	padding: 0;
+	height: 0;
+}
+
 ul {
 	margin-left: 1.5rem;
 	list-style-type: disc;
@@ -60,11 +89,11 @@ ol li, ul li {
 }
 
 h1, h2, h3, h4, h5, h6 {
-	text-transform: capitalize;
+	text-transform: initial, capitalize;
 }
 
 p:first-letter, div:first-letter {
-	text-transform: uppercase;
+	text-transform: initial, uppercase;
 }
 
 /*
@@ -75,6 +104,10 @@ h4[id]:target {
 	padding-top: 4rem;
 }
 */
+
+.s-title#title:before {
+	width: 100vw;
+}
 
 @media (min-width: 960px) {
 	x.navbar.docs-navbar .navbar-section {

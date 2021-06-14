@@ -101,6 +101,19 @@ function onLoad(event) {
 		element.classList.remove("loading")
 		//window.location.hash = `id--${window.location.hash.substring(1)}`
 		//window.location.hash = ""
+		element.querySelectorAll("script").forEach(script => {
+			if(script.src) {
+				fetch(script.src)
+					.then(source => source.text())
+					.then(text => new Function(text).call(this))
+					.catch(console.error)
+			}
+			if(script.text) {
+				new Function(script.text).call(this)
+			}
+			window.mrt = script
+			return console.log(script)
+		})
 		onHashChange(null)
 		return
 	})

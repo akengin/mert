@@ -37,7 +37,7 @@
 				<a class="btn btn-md btn-link" href=https://github.com/pvtmert >
 					<img class="icon icon-md" src=https://akveo.github.io/eva-icons/fill/svg/github.svg />
 				</a>
-				<a class="btn btn-md btn-link" href=https://www.linkedin.com/in/mert-akengin-1640b887 >
+				<a class="btn btn-md btn-link" href=https://www.linkedin.com/in/mert-akengin 1640b887 >
 					<img class="icon icon-md" src=https://akveo.github.io/eva-icons/fill/svg/linkedin.svg />
 				</a>
 			</section>
@@ -60,6 +60,38 @@
 			</div>
 		</div>
 	</div>
-	<script src="./script.js" async defer ></script>
+	<script>
+		window.Papercups = {
+			config: {
+				accountId: "b04c2648-2ca5-403f-8673-0e90cc1281da",
+				title: "Welcome!",
+				subtitle: "Hello, you can chat with me or leave me a note!",
+				primaryColor: "#5755d9",
+				greeting: "Hello!",
+				awayMessage: "Sorry, I am not available at the moment.",
+				newMessagePlaceholder: "Start typing...",
+				showAgentAvailability: true,
+				agentAvailableText: "I am online right now!",
+				agentUnavailableText: "I am away at the moment.",
+				requireEmailUpfront: true,
+				iconVariant: "filled",
+				baseUrl: "https://app.papercups.io",
+			},
+		}
+		if(window.location.hostname == "localhost") {
+			window.Papercups.config.customer = {
+				name: "john",
+				email: "user@mail.com",
+				external_id: window.location.host,
+				metadata: {
+					path: window.location.search,
+				},
+			}
+		}
+	</script>
+	<script async defer src="https://js.sentry-cdn.com/52fb743e829b4d2dbb788e8d49a38d5c.min.js" crossorigin="anonymous" ></script>
+	<script async defer src="https://app.papercups.io/storytime.js" ></script>
+	<script async defer src="https://app.papercups.io/widget.js" ></script>
+	<script async defer src="./script.js" ></script>
 </body>
 </html>

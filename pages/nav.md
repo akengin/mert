@@ -1,6 +1,26 @@
 
 <!--title>Mert Akengin</title-->
 
+<script>
+async function loadLogo(elem) {
+	return await fetch("https://wtfismyip.com/json")
+		.then(resp => resp.json())
+		.then(json => {
+			elem.innerHTML = `root@${json.YourFuckingIPAddress}:~# `
+			return elem
+		})
+}
+loadLogo(document.querySelector("code"))
+</script>
+
+<div class="accordion-body">
+
+- [Home](pages/home.md)
+- [Blog](pages/blog.md)
+
+</div>
+
+
 <details class="accordion" open >
 	<summary class="accordion-header">
 		<i class="icon icon-arrow-right mr-1"></i>

@@ -109,6 +109,24 @@ h4[id]:target {
 	width: 100vw;
 }
 
+.blink::after {
+	content: "";
+	position: relative;
+	display: inline-block;
+	background-color: #ddd;
+	vertical-align: bottom;
+	width: 0.75em;
+	height: 1.4em;
+	-webkit-animation: blink 1s step-end infinite;
+	animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+	0% { opacity: 1.0; }
+	50% { opacity: 0.0; }
+	100% { opacity: 1.0; }
+}
+
 @media (min-width: 960px) {
 	x.navbar.docs-navbar .navbar-section {
 		-webkit-backdrop-filter: blur(5px);

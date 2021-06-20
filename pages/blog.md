@@ -5,15 +5,12 @@
 
 <script>
 
-async function blog() {
+async function blog(parameters, callback) {
 	return await fetch("https://notion-gw-jtojjrmgya-ez.a.run.app/v1/search", {
 		method: "POST",
 		data: JSON.stringify({
 			page_size: 100,
-			sort: {
-				timestamp: "last_edited_time",
-				direction: "descending",
-			}
+			...parameters,
 		})
 	})
 	.then(resp => resp.json())
@@ -26,11 +23,19 @@ async function blog() {
 		titles: obj.properties.title.title.map(t => t.plain_text),
 		summary: obj.properties.title.title.map(t => t.text.content),
 	})))
-	.then(items => items.sort((x, y) => y.created.getTime() - x.created.getTime()))
+	.then(items => callback ? callback(items) : items)
 	//.then(data => console.log(data))
 }
 
-blog().then(entries => entries.map(entry => (`
+blog({
+	sort: {
+		timestamp: "last_edited_time",
+		direction: "descending",
+	},
+}, (items) => items
+	.filter(item => item.titles.join("\n").search(/\[wip\]/ig))
+	.sort((x, y) => y.created.getTime() - x.created.getTime())
+).then(entries => entries.map(entry => (`
 	<a href="${entry.link}" class="column d-block m-2" >
 		<div class="tile tile-centered">
 			<div class="tile-icon">
@@ -50,11 +55,10 @@ blog().then(entries => entries.map(entry => (`
 			</div>
 		</div>
 	</a>
-`)).join("\n")).then(text => {
-	document.querySelector("#blog-index").innerHTML = text
-	document.querySelector("#blog-index").classList.remove("loading")
+`)).join("\n")).then(text => withSelf(document.querySelector("#blog-index"), function() {
+	this.innerHTML = text
+	this.classList.remove("loading")
 	return
-
-})
+}))
 
 </script>

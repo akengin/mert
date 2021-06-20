@@ -3,7 +3,7 @@
 
 <script>
 async function loadLogo(elem) {
-	return await fetch("https://wtfismyip.com/json")
+	return await fetch("https://ipv4.wtfismyip.com/json")
 		.then(resp => resp.json())
 		.then(json => {
 			elem.innerHTML = `root@${json.YourFuckingIPAddress}:~# `

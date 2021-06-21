@@ -5,8 +5,10 @@
 
 <script>
 
+const apiUrl = "https://notion-gw-jtojjrmgya-ez.a.run.app"
+
 async function blog(parameters, callback) {
-	return await fetch("https://notion-gw-jtojjrmgya-ez.a.run.app/v1/search", {
+	return await fetch(`${apiUrl}/v1/search`, {
 		method: "POST",
 		data: JSON.stringify({
 			page_size: 100,
@@ -14,15 +16,24 @@ async function blog(parameters, callback) {
 		})
 	})
 	.then(resp => resp.json())
-	.then(json => json.results.map(obj => ({
-		id: obj.id,
-		link: `https://notion.so/${obj.id.split("-").join("")}`,
-		archived: obj.archived,
-		created: new Date(obj.created_time),
-		updated: new Date(obj.last_edited_time),
-		titles: obj.properties.title.title.map(t => t.plain_text),
-		summary: obj.properties.title.title.map(t => t.text.content),
-	})))
+	.then(json => json.results.filter(result => result.parent.workspace))
+	.then(wslist => wslist
+		.map(async ws => await fetch(`${apiUrl}/v1/blocks/${ws.id}/children?page_size=100`)
+			.then(resp => resp.json())
+			.then(json => json.results)
+		)
+	)
+	.then(blocklists => Promise.all(blocklists))
+	.then(blocks => blocks.flat()
+		.filter(result => result.type == "child_page")
+		.map(page => ({
+			id: page.id,
+			link: `https://notion.so/${page.id.split("-").join("")}`,
+			title: page.child_page.title,
+			created: new Date(page.created_time),
+			updated: new Date(page.last_edited_time),
+		}))
+	)
 	.then(items => callback ? callback(items) : items)
 	//.then(data => console.log(data))
 }
@@ -33,7 +44,8 @@ blog({
 		direction: "descending",
 	},
 }, (items) => items
-	.filter(item => item.titles.join("\n").search(/\[wip\]/ig))
+	.map(item => ({ ...item, content: item.title || item.titles.join(" ") }))
+	.filter(item => item.content.search(/\[wip\]/ig))
 	.sort((x, y) => y.created.getTime() - x.created.getTime())
 ).then(entries => entries.map(entry => (`
 	<a href="${entry.link}" class="column d-block m-2" >
@@ -44,7 +56,7 @@ blog({
 			<div class="tile-content">
 				<p class="tile-title">
 					<small class="label">${entry.created.toLocaleString()}</small>
-					<strong>${entry.titles.join(" ")}</strong>
+					<strong>${entry.content}</strong>
 				</p>
 				<!--p class="tile-subtitle text-gray">summary</p-->
 			</div>

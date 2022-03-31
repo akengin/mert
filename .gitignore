@@ -1,0 +1,12 @@
+.git/
+images/
+**/.git
+*.tmp
+*.zip
+*.tar
+*.tar.gz
+*.tar.bz2
+websocketd
+fswatch
+*.dylib
+*.a

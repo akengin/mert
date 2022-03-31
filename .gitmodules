@@ -1,0 +1,18 @@
+[submodule "spectre"]
+	path = spectre
+	url = https://github.com/picturepan2/spectre.git
+[submodule "marked"]
+	path = marked
+	url = https://github.com/markedjs/marked.git
+[submodule "markdown-it"]
+	path = markdown-it
+	url = https://github.com/markdown-it/markdown-it.git
+[submodule "normalize.css"]
+	path = normalize.css
+	url = https://github.com/necolas/normalize.css.git
+[submodule "modern-normalize"]
+	path = modern-normalize
+	url = https://github.com/sindresorhus/modern-normalize.git
+[submodule "icons.css"]
+	path = icons
+	url = https://github.com/picturepan2/icons.css.git

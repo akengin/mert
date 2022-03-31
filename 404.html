@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+	<head>
+		<title>404 - Page not Found</title>
+		<style type="text/css">
+			#console {
+				background-color: #000;
+				font-family: courier, monospace;
+				color: #fff;
+				margin: auto;
+				_width: 750px;
+				padding: 1rem;
+				font-size: 16px;
+			}
+			#console a {
+				color: #0bc;
+				text-decoration: none;
+			}
+			#a {
+				color: #0f0;
+			}
+			#c {
+				color: #0bc;
+			}
+			#b {
+				color: #ff0096;
+			}
+			#d {
+				color: red;
+			}
+			@keyframes blink {
+				from {
+					opacity: 1;
+				}
+				to {
+					opacity: 0;
+				}
+			}
+			.cursor {
+				animation: 0.5s infinite alternate steps(2, jump-none) blink;
+			}
+		</style>
+	</head>
+	<body>
+		<script async defer src=redir.js ></script>
+		<div id="console">
+			<span id="a">
+				mert@akeng.in</span>:<span id="b">~</span><span id="c">$ </span>
+				cat ./404.txt<br/><br/>&nbsp;&nbsp;_&nbsp;&nbsp;_&nbsp;&nbsp;&nbsp;&nbsp;___&nbsp;&nbsp;_&nbsp;&nbsp;_&nbsp;&nbsp;&nbsp;<br>&nbsp;|&nbsp;||&nbsp;|&nbsp;&nbsp;/&nbsp;_&nbsp;\|&nbsp;||&nbsp;|&nbsp;&nbsp;<br>&nbsp;|&nbsp;||&nbsp;|_|&nbsp;|&nbsp;|&nbsp;|&nbsp;||&nbsp;|_&nbsp;<br>&nbsp;|__&nbsp;&nbsp;&nbsp;_|&nbsp;|&nbsp;|&nbsp;|__&nbsp;&nbsp;&nbsp;_|<br>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;|&nbsp;|&nbsp;|_|&nbsp;|&nbsp;&nbsp;|&nbsp;|&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;|_|&nbsp;&nbsp;\___/&nbsp;&nbsp;&nbsp;|_|&nbsp;&nbsp;<br /><br><br>
+			<span id="d">ERR!</span> 404 Not Found: We were unable to find the requested page.<br /><br />
+			<a href="?">Return to home...</a><span class=cursor >|</span>
+		</div>
+	</body>
+</html>

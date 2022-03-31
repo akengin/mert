@@ -1,0 +1,140 @@
+
+
+@import url(./modern-normalize/modern-normalize.css);
+@import url(./normalize.css/normalize.css);
+@import url(./spectre/dist/spectre.min.css);
+@import url(./spectre/dist/spectre-exp.min.css);
+@import url(./spectre/dist/spectre-icons.min.css);
+@import url(./spectre/docs/dist/docs.min.css);
+@import url(./icons/dist/icons.min.css);
+
+
+.docs-content {
+	width: auto;
+}
+
+#sidebar nav.nav.docs-nav {
+	margin-top: 0;
+	_margin: 0;
+}
+
+main#content > .timeline > .timeline-item::before {
+	top: 1.6rem;
+	left: .75rem;
+}
+
+main#content > .timeline > .timeline-item .timeline-icon {
+	width: 1.6rem;
+	height: 1.6rem;
+	line-height: 1.6rem;
+}
+
+main#content > .timeline > .timeline-item .timeline-icon::before {
+	left: .6rem;
+	top: .75rem;
+}
+
+main#content > .timeline > .timeline-item > .timeline-content::first-line {
+	font-weight: 600;
+}
+
+main#content .tile .tile-subtitle,
+main#content .tile .tile-title {
+	line-height: 1.6rem;
+	margin: auto;
+}
+
+main#content img {
+	margin: 0;
+	padding: 0;
+	max-width: 67vw;
+	max-height: 67vh;
+}
+
+main#content img:active {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+	width: auto;
+	height: auto;
+	max-width: 100%;
+	max-height: 100%;
+	vertical-align: middle;
+	z-index: 99;
+}
+
+main#content hr {
+	box-sizing: border-box;
+	border: .05rem solid #dadee4;
+	padding: 0;
+	height: 0;
+}
+
+ul {
+	margin-left: 1.5rem;
+	list-style-type: disc;
+	list-style-position: outside;
+}
+
+li > p {
+	display: block;
+	margin-bottom: 0.8rem;
+}
+
+ol li, ul li {
+	margin-top: auto;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	text-transform: initial, capitalize;
+}
+
+p:first-letter, div:first-letter {
+	text-transform: initial, uppercase;
+}
+
+/*
+h1[id]:target,
+h2[id]:target,
+h3[id]:target,
+h4[id]:target {
+	padding-top: 4rem;
+}
+*/
+
+.s-title#title:before {
+	width: 100vw;
+}
+
+.blink::after {
+	content: "";
+	position: relative;
+	display: inline-block;
+	background-color: #ddd;
+	vertical-align: bottom;
+	width: 0.75em;
+	height: 1.4em;
+	-webkit-animation: blink 1s step-end infinite;
+	animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+	0% { opacity: 1.0; }
+	50% { opacity: 0.0; }
+	100% { opacity: 1.0; }
+}
+
+@media (min-width: 960px) {
+	x.navbar.docs-navbar .navbar-section {
+		-webkit-backdrop-filter: blur(5px);
+		backdrop-filter: blur(5px);
+		background: rgba(247,248,249,.65);
+		display: block;
+	}
+	.navbar.docs-navbar .navbar-section .navbar-brand {
+		display: none;
+	}
+}

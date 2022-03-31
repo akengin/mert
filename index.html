@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="author" content="Mert Akengin" />
+	<meta name="description" content="Mert's porfolio and blog" />
+	<meta name="keywords" content="mert, akengin, devops, engineering, cloud, blog, kubernetes, terraform, k8s, internet" />
+	<meta name="robots" content="index,follow" />
+	<meta name="theme-color" content="#5755d9" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" >
+	<link rel="stylesheet" href="./style.css" />
+	<title>Mert Akengin</title>
+</head>
+<body>
+	<div class="docs-container off-canvas off-canvas-sidebar-show">
+		<header class="navbar docs-navbar p-fixed">
+			<section class="navbar-section" style="flex: 0.15 0 0;" >
+				<a class="off-canvas-toggle btn btn-md btn-link btn-action" href="#sidebar">
+					<i class="icon icon-lg icon-menu"></i>
+					<span class=ml-2 >Menu</span>
+				</a>
+			</section>
+			<!--section class="navbar-section">
+				<a href="?#" class="navbar-brand text-primary" >sec title</a>
+			</section-->
+			<section class="navbar-section btns d-flex">
+				<!--a class="btn btn-md btn-link" href=https://mert.akeng.in >
+					<img
+						async=on decoding=async loading=lazy class="icon icon-md"
+						src=https://akveo.github.io/eva-icons/fill/svg/link-2.svg />
+				</a-->
+				<!--a class="btn btn-md btn-link" href=https://blog.n0pe.me >
+					<img
+						async=on decoding=async loading=lazy class="icon icon-md"
+						src=https://akveo.github.io/eva-icons/fill/svg/edit.svg />
+				</a-->
+				<a class="btn btn-md btn-link" href=mailto:mert@akeng.in >
+					<img
+						async=on decoding=async loading=lazy class="icon icon-md"
+						src=https://akveo.github.io/eva-icons/fill/svg/email.svg />
+				</a>
+				<a class="btn btn-md btn-link" href=tel:+491744010738 >
+					<img
+						async=on decoding=async loading=lazy class="icon icon-md"
+						src=https://akveo.github.io/eva-icons/fill/svg/phone.svg />
+				</a>
+				<a class="btn btn-md btn-link" href=https://hub.docker.com/u/pvtmert >
+					<img
+						async=on decoding=async loading=lazy class="icon icon-md"
+						src=https://akveo.github.io/eva-icons/fill/svg/layers.svg />
+				</a>
+				<a class="btn btn-md btn-link" href=https://github.com/spacelatte >
+					<img
+						async=on decoding=async loading=lazy class="icon icon-md"
+						src=https://akveo.github.io/eva-icons/fill/svg/github.svg />
+				</a>
+				<a class="btn btn-md btn-link" href=https://www.linkedin.com/in/mert-akengin 1640b887 >
+					<img
+						async=on decoding=async loading=lazy class="icon icon-md"
+						src=https://akveo.github.io/eva-icons/fill/svg/linkedin.svg />
+				</a>
+			</section>
+		</header>
+		<div id="sidebar" class="docs-sidebar off-canvas-sidebar">
+			<div class="bg-dark docs-brand text-light" >
+				<div class="bg-dark docs-logo text-light" >
+					<code class="bg-dark text-light blink d-block column col-12" ></code>
+				</div>
+			</div>
+			<nav class="nav docs-nav" data-load="../pages/nav.md" ></nav>
+		</div>
+		<a class="off-canvas-overlay" href="#close"></a>
+		<div class="off-canvas-content p-centered">
+			<div class="docs-content p-centered" >
+				<div class="container p-centered" >
+					<h3 id=title class="s-title">&nbsp;</h3>
+					<main id=content class="columns p-centered loading" ></main>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script async defer >
+		window.Papercups = {
+			config: {
+				accountId: "b04c2648-2ca5-403f-8673-0e90cc1281da",
+				title: "Welcome!",
+				subtitle: "Hello, you can chat with me or leave me a note!",
+				primaryColor: "#5755d9",
+				greeting: `Hello! You can use this area to message me. I'll see messages when I'm online...`,
+				awayMessage: "Sorry, I am not available at the moment.",
+				newMessagePlaceholder: "Start typing...",
+				showAgentAvailability: true,
+				agentAvailableText: "I am online right now!",
+				agentUnavailableText: "I am away at the moment.",
+				requireEmailUpfront: true,
+				iconVariant: "filled",
+				baseUrl: "https://app.papercups.io",
+			},
+		}
+		if(window.location.hostname == "localhost") {
+			window.Papercups.config.customer = {
+				name: "john",
+				email: "user@mail.com",
+				external_id: window.location.host,
+				metadata: {
+					path: window.location.search,
+				},
+			}
+		}
+	</script>
+	<script async defer src="https://js.sentry-cdn.com/52fb743e829b4d2dbb788e8d49a38d5c.min.js" crossorigin="anonymous" ></script>
+	<!-- <script async defer src="https://app.papercups.io/storytime.js" ></script> -->
+	<script async defer src="https://app.papercups.io/widget.js" ></script>
+	<script async defer src="./script.js" ></script>
+</body>
+</html>

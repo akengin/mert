@@ -25,7 +25,7 @@ async function blog(parameters, callback) {
 	})
 	.then(pages => pages.map(page => ({
 		id:   page?.id                                       || "no-id",
-		link: page?.public_url                               || page.?.url || "no-url",
+		link: page?.public_url                               || page?.url || "no-url",
 		icon: page?.icon?.emoji                              || `<i class="icon icon-link centered"></i>`,
 		title: page?.properties?.title?.title[0]?.plain_text || "[wip] no-title specified",
 		created: new Date(page.created_time                  || 0),

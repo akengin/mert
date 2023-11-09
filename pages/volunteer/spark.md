@@ -1,5 +1,4 @@
 
-<script>alert(1);</script>
 
 ![](https://cdn.discordapp.com/attachments/220182253651623936/245635158512762882/VID-20131115-00000.MP4_snapshot_00.03_2014.03.26_23.06.01.jpg)
 

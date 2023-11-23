@@ -7,10 +7,12 @@ const pages = {
 }
 
 window.onload = function() {
-	if(window.location.pathname in pages) {
-		let target = pages[window.location.pathname] || `/?${window.location.pathname}`
-		window.location.href = target
-	} else console.log("Not in the mapping:", window.location.pathname, pages)
+	if (window.location.pathname in pages) {
+		window.location.href = pages[window.location.pathname]
+	} else {
+		console.warn("Not in the mapping:", window.location.pathname, pages)
+		console.info("Using default redirect...")
+		window.location.href = `/?${window.location.pathname}`
+	}
 	return
 }
-

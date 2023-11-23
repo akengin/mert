@@ -15,8 +15,8 @@ loadLogo(document.querySelector("code"))
 
 <div class="accordion-body">
 
-- [Home](pages/home.md)
-- [Blog](pages/blog.md)
+- [Home](pages/home)
+- [Blog](pages/blog)
 
 </div>
 
@@ -28,12 +28,12 @@ loadLogo(document.querySelector("code"))
 	</summary>
 	<div class="accordion-body">
 
-- [Amazon](pages/work/amazon.md)
-- [FinCompare](pages/work/fincompare.md)
-- [iyzico](pages/work/iyzico.md)
-- [IVEN](pages/work/iven.md)
-- [TATU](pages/work/tatu.md)
-- [Lostar](pages/work/lostar.md)
+- [Amazon](pages/work/amazon)
+- [FinCompare](pages/work/fincompare)
+- [iyzico](pages/work/iyzico)
+- [IVEN](pages/work/iven)
+- [TATU](pages/work/tatu)
+- [Lostar](pages/work/lostar)
 
 	</div>
 </details>
@@ -46,11 +46,11 @@ loadLogo(document.querySelector("code"))
 	</summary>
 	<div class="accordion-body">
 
-- [Ericsson Innovation Awards](pages/awards/eia.md)
-- [Hack-a-Sat CTF](pages/awards/sat.md)
-- [STM CTF](pages/awards/stm.md)
-- [Intel IoT Hackathon](pages/awards/intel.md)
-- [TUBITAK Efficiency Challenge](pages/awards/tubitak.md)
+- [Ericsson Innovation Awards](pages/awards/eia)
+- [Hack-a-Sat CTF](pages/awards/sat)
+- [STM CTF](pages/awards/stm)
+- [Intel IoT Hackathon](pages/awards/intel)
+- [TUBITAK Efficiency Challenge](pages/awards/tubitak)
 
 	</div>
 </details>
@@ -63,10 +63,10 @@ loadLogo(document.querySelector("code"))
 	</summary>
 	<div class="accordion-body">
 
-- [Android](pages/projects/android.md)
-- [IoT & Embedded](pages/projects/iot.md)
-- [Linux](pages/projects/linux.md)
-- [Web](pages/projects/web.md)
+- [Android](pages/projects/android)
+- [IoT & Embedded](pages/projects/iot)
+- [Linux](pages/projects/linux)
+- [Web](pages/projects/web)
 
 	</div>
 </details>
@@ -78,9 +78,9 @@ loadLogo(document.querySelector("code"))
 	</summary>
 	<div class="accordion-body">
 
-- [TEDxBahcesehir](pages/volunteer/tedx.md)
-- [Abbox](pages/volunteer/abbox.md)
-- [SparkGO](pages/volunteer/spark.md)
+- [TEDxBahcesehir](pages/volunteer/tedx)
+- [Abbox](pages/volunteer/abbox)
+- [SparkGO](pages/volunteer/spark)
 
 	</div>
 </details>

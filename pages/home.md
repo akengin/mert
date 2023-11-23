@@ -17,7 +17,7 @@ const data = {
 			title: "DevOps Engineer, Production Systems",
 			dates: "November 2021 -- Current",
 			place: "Luxembourg",
-			link: "?/pages/work/amazon.md",
+			link: "?/pages/work/amazon",
 			action: "Details",
 		},
 		{
@@ -26,7 +26,7 @@ const data = {
 			title: "Built cost-effective and modern infrastructure on AWS",
 			dates: "October 2020 -- November 2021",
 			place: "Berlin",
-			link: "?/pages/work/fincompare.md",
+			link: "?/pages/work/fincompare",
 			action: "Details",
 		},
 		{
@@ -35,7 +35,7 @@ const data = {
 			title: "Built a highly scalable infrastructure that's trusted by Amazon, Netflix, Aliexpress & more",
 			dates: "August 2018 -- October 2020",
 			place: "Istanbul",
-			link: "?/pages/work/iyzico.md",
+			link: "?/pages/work/iyzico",
 			action: "Details",
 		},
 		{
@@ -44,7 +44,7 @@ const data = {
 			title: "Built real-time IoT cloud systems for Turkey's leading appliance manufacturers",
 			dates: "October 2016 -- September 2018",
 			place: "Istanbul",
-			link: "?/pages/work/iven.md",
+			link: "?/pages/work/iven",
 			action: "Details",
 		},
 		{
@@ -53,7 +53,7 @@ const data = {
 			title: "Built high-performance GPU clusters and office infrastructure",
 			dates: "August 2017 -- July 2018",
 			place: "Istanbul",
-			link: "?/pages/work/tatu.md",
+			link: "?/pages/work/tatu",
 			action: "Details",
 		},
 		{
@@ -62,14 +62,14 @@ const data = {
 			title: "Built a vulnerability detection and ticket management system",
 			dates: "February 2016 -- August 2016",
 			place: "Istanbul",
-			link: "?/pages/work/lostar.md",
+			link: "?/pages/work/lostar",
 			action: "Details",
 		},
 	],
 	awards: [
 		{
 			id: "eia2019",
-			link: "?/pages/awards/eia.md",
+			link: "?/pages/awards/eia",
 			title: "Ericsson Innovation Awards",
 			date: "December 2019",
 			location: "Stockholm/Sweden",
@@ -79,48 +79,48 @@ const data = {
 		/*
 		<div class="timeline-item" id="hack-a-sat">
 			<div class="timeline-left">
-				<a class="timeline-icon icon-lg" href="?/pages/awards/sat.md">
+				<a class="timeline-icon icon-lg" href="?/pages/awards/sat">
 					<i class="icon icon-check"></i>
 				</a>
 			</div>
 			<div class="timeline-content">
-				<a href="?/pages/awards/sat.md">Hack-A-Sat CTF</a>
+				<a href="?/pages/awards/sat">Hack-A-Sat CTF</a>
 			</div>
 		</div>
 		<div class="timeline-item" id="stm-ctf">
 			<div class="timeline-left">
-				<a class="timeline-icon icon-lg" href="?/pages/awards/stm.md">
+				<a class="timeline-icon icon-lg" href="?/pages/awards/stm">
 					<i class="icon icon-check"></i>
 				</a>
 			</div>
 			<div class="timeline-content">
-				<a href="?/pages/awards/stm.md">STM CTF</a>
+				<a href="?/pages/awards/stm">STM CTF</a>
 			</div>
 		</div>
 		<div class="timeline-item" id="intel">
 			<div class="timeline-left">
-				<a class="timeline-icon icon-lg" href="?/pages/awards/intel.md">
+				<a class="timeline-icon icon-lg" href="?/pages/awards/intel">
 					<i class="icon icon-check"></i>
 				</a>
 			</div>
 			<div class="timeline-content">
-				<a href="?/pages/awards/intel.md">Intel IoT Hackathon</a>
+				<a href="?/pages/awards/intel">Intel IoT Hackathon</a>
 			</div>
 		</div>
 		<div class="timeline-item" id="tubitak">
 			<div class="timeline-left">
-				<a class="timeline-icon icon-lg" href="?/pages/awards/tubitak.md">
+				<a class="timeline-icon icon-lg" href="?/pages/awards/tubitak">
 					<i class="icon icon-check"></i>
 				</a>
 			</div>
 			<div class="timeline-content">
-				<a href="?/pages/awards/tubitak.md">TUBITAK Efficiency Challenge</a>
+				<a href="?/pages/awards/tubitak">TUBITAK Efficiency Challenge</a>
 			</div>
 		</div>
 		*/
 		{
 			id: "hack-a-sat",
-			link: "?/pages/awards/sat.md",
+			link: "?/pages/awards/sat",
 			title: "Hack-A-Sat CTF '20",
 			date: "April 2020",
 			location: "Online",
@@ -129,7 +129,7 @@ const data = {
 		},
 		{
 			id: "stm-ctf",
-			link: "?/pages/awards/stm.md",
+			link: "?/pages/awards/stm",
 			title: "STM CTF '17",
 			date: "October 2017",
 			location: "Ankara/Turkey",
@@ -138,7 +138,7 @@ const data = {
 		},
 		{
 			id: "intel",
-			link: "?/pages/awards/intel.md",
+			link: "?/pages/awards/intel",
 			title: "Intel IoT Hackathon",
 			date: "September 2014 &amp; 2015",
 			location: "Istanbul/Turkey",
@@ -147,7 +147,7 @@ const data = {
 		},
 		{
 			id: "tubitak",
-			link: "?/pages/awards/tubitak.md",
+			link: "?/pages/awards/tubitak",
 			title: "TUBITAK Efficiency Challenge",
 			date: "2014 &amp; 2015",
 			location: "Izmit/Turkey",
@@ -158,17 +158,17 @@ const data = {
 	activities: [
 		{
 			id: "abbox",
-			link: "?/pages/volunteer/abbox.md",
+			link: "?/pages/volunteer/abbox",
 			title: "Abbox 3D Printing",
 		},
 		{
 			id: "tedx",
-			link: "?/pages/volunteer/tedx.md",
+			link: "?/pages/volunteer/tedx",
 			title: "TEDxBahcesehir",
 		},
 		{
 			id: "spark",
-			link: "?/pages/volunteer/spark.md",
+			link: "?/pages/volunteer/spark",
 			title: "SparkGO",
 		},
 	]

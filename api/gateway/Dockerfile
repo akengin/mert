@@ -24,7 +24,6 @@ COPY <<"EOF" /etc/caddy/Caddyfile
 	encode * gzip zstd
 	reverse_proxy * {env.UPSTREAM} {
 		header_up   Host                        "{http.reverse_proxy.upstream.hostport}"
-		header_up   Notion-Version              "2021-05-13"
 		header_up   Authorization               "Bearer {env.APITOKEN}"
 		header_down Access-Control-Allow-Origin "{http.request.header.origin}"
 		transport http {

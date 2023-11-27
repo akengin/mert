@@ -1,16 +1,26 @@
 
 "use strict";
 
+let _currentPage = null
+let _storage = sessionStorage
 let _scroll = {
 
-	load: function (storage) {
-		let data = JSON.parse(storage.getItem("scroll") || "[0,0]")
+	load: function (event, storage = _storage) {
+		let data = JSON.parse(storage.getItem(`scroll:${_currentPage}`) || "[0,0]")
 		return window.scrollTo(data[0], data[1])
 	},
 
-	save: function (storage) {
-		let data = JSON.stringify([ window.scrollX, window.scrollY, ])
-		return storage.setItem("scroll", data)
+	save: function (event, storage = _storage) {
+		let cls = "d-hide"
+		let btn = document.querySelector("button#top")
+		let top = document.querySelector("h3.s-title#title").getBoundingClientRect()
+		let pos = [window.scrollX, window.scrollY, ]
+		if (btn && (pos[0] > (top.y + top.height) || pos[1] > (top.y + top.height))) {
+			btn.classList.remove(cls)
+		} else {
+			btn.classList.add(cls)
+		}
+		return storage.setItem(`scroll:${_currentPage}`, JSON.stringify(pos))
 	},
 
 }
@@ -286,9 +296,10 @@ function onLoad(event) {
 	return loadDocument({
 		parser,
 		loader,
-	}, ".md")
+	})
 }
 
+window.addEventListener("scroll", _scroll.save)
 window.addEventListener("load", onLoad, true)
 window.addEventListener("hashchange", onHashChange, {
 	capture: true,

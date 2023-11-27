@@ -196,8 +196,12 @@ function onLoad(event) {
 
 	console.debug("onLoad:", arguments)
 
+	if(window.makengin) {
+		return console.warn("onLoad: already loaded;", (new Date() - makengin))
+	} else window.makengin = new Date()
+
 	try {
-		developerMode("localhost");
+		developerMode("localhost")
 	} catch(e) {
 		console.log("DevModeError", e)
 	}

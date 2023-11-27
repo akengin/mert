@@ -428,4 +428,4 @@ Arduino, ESP-IDF, DJango, Boto3/AWS, Spring-Boot, PySerial, CherryPy, NodeJS<br 
 	data-url="https://calendly.com/mert-akengin?hide_landing_page_details=1&hide_gdpr_banner=1"
 	style="min-width:320px;height:1280px;"
 	></div>
-<script async defer src="https://assets.calendly.com/assets/external/widget.js" ></script>
+<script async defer src="https://assets.calendly.com/assets/external/widget.js" crossorigin="anonymous" ></script>

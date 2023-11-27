@@ -33,12 +33,24 @@ function makeWorker(script, callback) {
 }
 function developerMode(hostname) {
 
-	let storage = window.sessionStorage;
+	let storage = window.sessionStorage
 
 	if (window.location.hostname === hostname) {
 		// window.location.href.replace(/^http/, "ws")
-		new WebSocket(`ws://${window.location.host}/`).onmessage = function() {
-			console.debug("developerMode/hostname/WebSocket:", arguments, _scroll.save(sessionStorage))
+		let ws = new WebSocket(`ws://${window.location.host}/`)
+
+		async function reconnect(event) {
+			console.debug("developerMode/reconnect:", arguments)
+			await new Promise(p => setTimeout(p, 999))
+			if (event.type === "close") {
+				developerMode(hostname)
+			}
+			return
+		}
+
+		ws.onclose = reconnect
+		ws.onmessage = async function () {
+			console.debug("developerMode/hostname/WebSocket:", arguments, _scroll.save())
 			return window.location.reload(true)
 		}
 	}

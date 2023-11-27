@@ -149,6 +149,39 @@ function onHashChange(event) {
 	return false
 }
 
+async function loadSectionAsync(element, loader) {
+	return element.querySelectorAll("[data-load]").forEach(async function(e, i) {
+
+		console.debug("element.querySelectorAll/[data-load]/forEach/callback:", e, i, arguments)
+
+		e.dataset.identity = "dl-" + (
+			self.crypto.randomUUID().replaceAll("", "")
+			||
+			Array(32).fill(0).map(x => Math.random().toString(36).charAt(2)).join("")
+		)
+
+		e.classList.add("loading")
+
+		if (loader) {
+			return loader.postMessage({
+				extension: null,
+				element: `[data-identity="${e.dataset.identity}"]`,
+				file: e.dataset.load,
+			})
+		} else {
+			return await fetch(e.dataset.load)
+				.then(resp => resp.text())
+				.then(html => {
+					e.innerHTML = html
+					e.classList.remove("loading")
+					if (e?.onload) {
+						e.onload(e)
+					}
+				})
+		}
+	})
+}
+
 function onLoad(event) {
 
 	console.debug("onLoad:", arguments)
@@ -192,6 +225,12 @@ function onLoad(event) {
 			window.mrt = script
 			return console.log(script)
 		})
+
+		if (loader)
+			loadSectionAsync(element, loader)
+		else
+			loadSectionAsync(element, null)
+
 		onHashChange(null)
 		return
 	})
@@ -228,29 +267,20 @@ function onLoad(event) {
 		})
 	})
 
-	document.querySelectorAll("[data-load]").forEach(function(e, i) {
+	loadSectionAsync(document, loader)
 
-		console.log(e, i, arguments)
-
-		e.dataset.identity = Array(32)
-			.fill(0)
-			.map(x => Math.random().toString(36).charAt(2))
-			.join("")
-
-		e.classList.add("loading")
-
-		if (loader) return loader.postMessage({
-			extension: null,
-			element: `[data-identity="${e.dataset.identity}"]`,
-			file: e.dataset.load,
+	/*
+	window.md = makeWorker("./workers/markdown.js", function (e) {
+		console.debug("window.md/makeWorker/callback:", e, arguments, this, self)
+		let element = e.data.target
+		if(typeof(element) === "string")
+			element = document.querySelector(element)
+		console.debug("element", element)
+		element.innerHTML = e.data.html
 		})
+	*/
 
-		return fetch(e.dataset.load)
-			.then(resp => resp.text())
-			.then(html => {
-				e.innerHTML = html;
-			})
-	})
+	window.md = parser
 
 	return loadDocument({
 		parser,
@@ -264,3 +294,5 @@ window.addEventListener("hashchange", onHashChange, {
 	once: false,
 	passive: false,
 })
+
+onLoad(null)

@@ -12,11 +12,16 @@ async function reply(response) {
 
 async function makeCache(key, callback, actual, ...args) {
 	let cache = await caches.open("makengin/fetch/v0")
-	if(! await cache.match(key)) {
-		let result = await cache.add(key)
-		console.debug("makeCache/match/add:", result)
+	try {
+		if (!(await cache.match(key))) {
+			let result = await cache.add(key)
+			console.debug("makeCache/match/add:", result)
+		}
+	} catch (error) {
+		console.warn("makeCache/open/error:", error)
 	}
-	return await callback(await actual(...args), ...args)
+	let response = await actual(...args)
+	return await callback(response, ...args)
 }
 
 onmessage = async function (event) {
@@ -60,7 +65,7 @@ onmessage = async function (event) {
 						resp: response,
 						text: await response.text(),
 					}))
-					.then(async obj => ({
+					.then(obj => ({
 						extension: extension,
 						element: element,
 						content: obj.text,
@@ -77,9 +82,17 @@ onmessage = async function (event) {
 						},
 						//resp: structuredClone(obj.resp),
 					}))
-					.catch(async err => ({
+					.catch(err => ({
 						element: event.data.element,
 						content: err.toString(),
+						error: err,
+						http: {
+							ok: false,
+							status: 500,
+							redirected: false,
+							type: null,
+							url: file,
+						},
 					}))
 			)
 		},

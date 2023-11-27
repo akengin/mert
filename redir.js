@@ -2,8 +2,8 @@
 const pages = {
 	"/blog": null,
 	"/home": null,
-	"/amazon": "/?/pages/work/amazon.md",
-	"/fincompare": "/?/pages/work/fincompare.md",
+	"/amazon": "/?/work/amazon",
+	"/fincompare": "/?/work/fincompare",
 }
 
 window.onload = function() {

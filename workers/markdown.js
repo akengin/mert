@@ -1,9 +1,9 @@
 
 "use strict";
 
-
+/*
+importScripts("../markdown-it/dist/markdown-it.min.js")
 let useMarkdownit = function(e) {
-	importScripts("../markdown-it/dist/markdown-it.min.js")
 	return postMessage({
 		target: e.data.target,
 		html: markdownit({
@@ -14,19 +14,23 @@ let useMarkdownit = function(e) {
 		}).render(e.data.text),
 	})
 }
+*/
 
-let useMarked = function(e) {
-	importScripts("../marked/marked.min.js")
+importScripts("../marked/marked.min.js")
+let useMarked = function(event) {
+	if(!event.data.text) {
+		return console.warn("useMarked: `data.text` property is required;", event)
+	}
 	return postMessage({
-		target: e.data.target,
-		html: marked(e.data.text, {
-			smartLists: false,
-			smartypants: false,
+		target: event.data.target,
+		html: marked(event.data.text, {
+			smartLists: true,
+			smartypants: true,
 			headerPrefix: "",
 			headerIds: true,
 			baseUrl: "?/",
 			silent: false,
-			breaks: false,
+			breaks: true,
 			mangle: true,
 			gfm: true,
 		}),

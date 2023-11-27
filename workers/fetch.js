@@ -10,6 +10,15 @@ async function reply(response) {
 	return response
 }
 
+async function makeCache(key, callback, actual, ...args) {
+	let cache = await caches.open("makengin/fetch/v0")
+	if(! await cache.match(key)) {
+		let result = await cache.add(key)
+		console.debug("makeCache/match/add:", result)
+	}
+	return await callback(await actual(...args), ...args)
+}
+
 onmessage = async function (event) {
 
 	try {
@@ -38,31 +47,42 @@ onmessage = async function (event) {
 		file: event.data.file, // pass original
 	})
 
-	return console.log("bok:",
-			await fetch(file)
-				.then(async response => ({
-					resp: response,
-					text: await response.text(),
-				}))
-				.then(async obj => await reply({
-					extension: extension,
-					element: element,
-					content: obj.text,
-					file: event.data.file, // pass original
-					http: {
-						//headers: obj.resp.headers,
-						bodyUsed: obj.resp.bodyUsed,
-						ok: obj.resp.ok,
-						redirected: obj.resp.redirected,
-						status: obj.resp.status,
-						statusText: obj.resp.statusText,
-						type: obj.resp.type,
-						url: obj.resp.url,
-					},
-				}))
-				.catch(async err => await reply({
-					element: event.data.element,
-					content: err,
-				}))
-		)
+	return makeCache(file,
+		async function (data, ...args) {
+			console.debug("makeCache/callback:", data, args, arguments)
+			return await reply(data)
+		},
+		async function (...args) {
+			console.debug("makeCache/actual:", args, arguments)
+			return (
+				await fetch(file)
+					.then(async response => ({
+						resp: response,
+						text: await response.text(),
+					}))
+					.then(async obj => ({
+						extension: extension,
+						element: element,
+						content: obj.text,
+						file: event.data.file, // pass original
+						http: {
+							//headers: obj.resp.headers,
+							bodyUsed: obj.resp.bodyUsed,
+							ok: obj.resp.ok,
+							redirected: obj.resp.redirected,
+							status: obj.resp.status,
+							statusText: obj.resp.statusText,
+							type: obj.resp.type,
+							url: obj.resp.url,
+						},
+						//resp: structuredClone(obj.resp),
+					}))
+					.catch(async err => ({
+						element: event.data.element,
+						content: err.toString(),
+					}))
+			)
+		},
+		event.data,
+	)
 }

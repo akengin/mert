@@ -1,5 +1,5 @@
 
-"use strict";
+"use strict"
 
 let _currentPage = null
 let _storage = sessionStorage
@@ -66,7 +66,7 @@ function developerMode(hostname) {
 	}
 	return
 }
-function loadDocument(worker, extension = null) {
+function loadDocument(worker, extension = ".md") {
 
 	const directory = "/pages/"
 
@@ -98,7 +98,7 @@ function loadDocument(worker, extension = null) {
 						</a>
 					</li>
 				`)
-		).join("\n")
+			).join("\n")
 		)
 	}
 
@@ -122,7 +122,7 @@ function onHashChange(event) {
 
 		let docRect = document.body.getBoundingClientRect()
 		let section = document.querySelector(window.location.hash.replace("~", ""))
-		let titleRect = document.querySelector("#title").getBoundingClientRect()
+		let titleRect = document.querySelector("h3.s-title#title").getBoundingClientRect()
 
 		if (section && section instanceof HTMLHeadingElement) {
 
@@ -154,7 +154,7 @@ function onHashChange(event) {
 		// 	inline: "start",
 		// 	block: "start",
 		// })
-	} else _scroll.load(sessionStorage);
+	} else _scroll.load()
 
 	return false
 }
@@ -258,7 +258,7 @@ function onLoad(event) {
 			console.warn("loader/makeWorker/fetch.js:", error)
 		}
 		const data = event.data
-		const extensions = [".md", ".htm", ".html", ".txt", ".json", ".js",]
+		const extensions = [ null, ".md", ".htm", ".html", ".txt", ".json", ".js", "/" ]
 		const extension = (event.data?.extension || extensions[0])
 		const nextExtensionIndex = extensions.indexOf(extension) + 1
 		const nextExtension = extensions[nextExtensionIndex]
@@ -292,7 +292,7 @@ function onLoad(event) {
 			element = document.querySelector(element)
 		console.debug("element", element)
 		element.innerHTML = e.data.html
-		})
+	})
 	*/
 
 	window.md = parser

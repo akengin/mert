@@ -1,7 +1,7 @@
 
 <title>Mert Akengin</title>
 
-**_BSc. Software Engineering_**
+**_BSc. Software Engineer, <span id=yoe >8</span> years of experience_**
 
 A passionate, curious and automation driven Software Engineer.
 
@@ -9,67 +9,118 @@ I strive to improve reliability, scalability and maintainability.
 
 <script async defer >
 
+"use strict";
+
+function genUUID() {
+	try {
+		return self.crypto.randomUUID().replaceAll("-", "")
+	} catch(error) {
+		console.warn("home/genUUID:", error)
+	}
+	return Array(32).fill(0).map(x => Math.random().toString(36).charAt(2)).join("")
+}
+
+const yoeLastDiff = (new Date() - new Date(2021, 11 - 1)); // month is 0-indexed
+const yoeCurrent = {
+	year: (yoeLastDiff / 31_536_000_000),
+	month: new Date(yoeLastDiff).getMonth(),
+}
+
+let monthString = ``
+
+switch(yoeCurrent.month) {
+	case 0:
+		monthString = ``
+		break
+	case 1:
+		monthString = `${yoeCurrent.month.toFixed(0)} month`
+		break
+	default:
+		monthString = `${yoeCurrent.month.toFixed(0)} months`
+		break
+}
+
+document.querySelector("#yoe").innerHTML = `${(6.75 + yoeCurrent.year).toFixed(0)}`
+
 const data = {
 	experience: [
 		{
 			id: "amazon",
-			company: "Amazon Europe SARL",
-			title: "DevOps Engineer, Production Systems",
-			dates: "November 2021 -- Current",
+			company: "Amazon Europe S.à r.l.",
+			description: null?.split("\n").map(line => line.trim()).join("\n"),
+			title: "_DevOps Engineer_, Amazon Transportation Services (ATS)",
+			dates: `Current, ${yoeCurrent.year.toFixed(0)} years ${monthString}`,
 			place: "Luxembourg",
-			link: "?/pages/work/amazon",
-			action: "Details",
+			uuid: `uuid-${genUUID()}`,
+		},
+		{
+			id: "wamo",
+			company: "WAMO Ltd.",
+			description: null,
+			title: "Cloud Systems Engineer",
+			dates: "1 year 9 months",
+			place: "Remote (EU)",
+			uuid: `uuid-${genUUID()}`,
+		},
+		{
+			id: "mubi",
+			company: "MUBI Inc.",
+			description: `Worked on cloud cost optimizations, in-house CDN, and video encoding systems.`,
+			title: "DevOps Engineer",
+			dates: "9 months",
+			place: "Berlin",
+			uuid: `uuid-${genUUID()}`,
 		},
 		{
 			id: "fincompare",
 			company: "FinCompare GmbH",
-			title: "Built cost-effective and modern infrastructure on AWS",
-			dates: "October 2020 -- November 2021",
+			description: `Built modern, cost-effective and secure infrastructure on AWS`,
+			title: "Site Reliability Engineer (SRE)",
+			dates: "1 year",
 			place: "Berlin",
-			link: "?/pages/work/fincompare",
-			action: "Details",
+			uuid: `uuid-${genUUID()}`,
 		},
 		{
 			id: "iyzico",
 			company: "iyzico Payment Systems",
-			title: "Built a highly scalable infrastructure that's trusted by Amazon, Netflix, Aliexpress & more",
-			dates: "August 2018 -- October 2020",
+			description: `Built a highly scalable infrastructure that's trusted by Amazon, Netflix, Aliexpress & more`,
+			title: "Systems Engineer, DevOps",
+			dates: "2 years 3 months",
 			place: "Istanbul",
-			link: "?/pages/work/iyzico",
-			action: "Details",
+			uuid: `uuid-${genUUID()}`,
 		},
 		{
 			id: "iven",
 			company: "IVEN, IoT Cloud Solutions",
-			title: "Built real-time IoT cloud systems for Turkey's leading appliance manufacturers",
-			dates: "October 2016 -- September 2018",
+			description: `Built real-time IoT cloud systems for Turkey's leading appliance manufacturers`,
+			title: "Software Engineer",
+			dates: "2 years",
 			place: "Istanbul",
-			link: "?/pages/work/iven",
-			action: "Details",
+			uuid: `uuid-${genUUID()}`,
 		},
 		{
 			id: "tatu",
 			company: "TATU Creative Studios",
-			title: "Built high-performance GPU clusters and office infrastructure",
-			dates: "August 2017 -- July 2018",
+			description: `Built high-performance GPU clusters and office infrastructure`,
+			title: "Software Developer",
+			dates: "1 year",
 			place: "Istanbul",
-			link: "?/pages/work/tatu",
-			action: "Details",
+			uuid: `uuid-${genUUID()}`,
 		},
 		{
 			id: "lostar",
 			company: "Lostar InfoSec",
-			title: "Built a vulnerability detection and ticket management system",
-			dates: "February 2016 -- August 2016",
+			description: `Built a vulnerability detection and ticket management system`,
+			title: "Intern, Software Development and Information Security Products",
+			dates: "6 months",
 			place: "Istanbul",
-			link: "?/pages/work/lostar",
-			action: "Details",
+			uuid: `uuid-${genUUID()}`,
 		},
 	],
 	awards: [
 		{
 			id: "eia2019",
-			link: "?/pages/awards/eia",
+			link: "?/awards/eia",
 			title: "Ericsson Innovation Awards",
 			date: "December 2019",
 			location: "Stockholm/Sweden",
@@ -79,48 +130,48 @@ const data = {
 		/*
 		<div class="timeline-item" id="hack-a-sat">
 			<div class="timeline-left">
-				<a class="timeline-icon icon-lg" href="?/pages/awards/sat">
+				<a class="timeline-icon icon-lg" href="?/awards/sat">
 					<i class="icon icon-check"></i>
 				</a>
 			</div>
 			<div class="timeline-content">
-				<a href="?/pages/awards/sat">Hack-A-Sat CTF</a>
+				<a href="?/awards/sat">Hack-A-Sat CTF</a>
 			</div>
 		</div>
 		<div class="timeline-item" id="stm-ctf">
 			<div class="timeline-left">
-				<a class="timeline-icon icon-lg" href="?/pages/awards/stm">
+				<a class="timeline-icon icon-lg" href="?/awards/stm">
 					<i class="icon icon-check"></i>
 				</a>
 			</div>
 			<div class="timeline-content">
-				<a href="?/pages/awards/stm">STM CTF</a>
+				<a href="?/awards/stm">STM CTF</a>
 			</div>
 		</div>
 		<div class="timeline-item" id="intel">
 			<div class="timeline-left">
-				<a class="timeline-icon icon-lg" href="?/pages/awards/intel">
+				<a class="timeline-icon icon-lg" href="?/awards/intel">
 					<i class="icon icon-check"></i>
 				</a>
 			</div>
 			<div class="timeline-content">
-				<a href="?/pages/awards/intel">Intel IoT Hackathon</a>
+				<a href="?/awards/intel">Intel IoT Hackathon</a>
 			</div>
 		</div>
 		<div class="timeline-item" id="tubitak">
 			<div class="timeline-left">
-				<a class="timeline-icon icon-lg" href="?/pages/awards/tubitak">
+				<a class="timeline-icon icon-lg" href="?/awards/tubitak">
 					<i class="icon icon-check"></i>
 				</a>
 			</div>
 			<div class="timeline-content">
-				<a href="?/pages/awards/tubitak">TUBITAK Efficiency Challenge</a>
+				<a href="?/awards/tubitak">TUBITAK Efficiency Challenge</a>
 			</div>
 		</div>
 		*/
 		{
 			id: "hack-a-sat",
-			link: "?/pages/awards/sat",
+			link: "?/awards/sat",
 			title: "Hack-A-Sat CTF '20",
 			date: "April 2020",
 			location: "Online",
@@ -129,7 +180,7 @@ const data = {
 		},
 		{
 			id: "stm-ctf",
-			link: "?/pages/awards/stm",
+			link: "?/awards/stm",
 			title: "STM CTF '17",
 			date: "October 2017",
 			location: "Ankara/Turkey",
@@ -138,7 +189,7 @@ const data = {
 		},
 		{
 			id: "intel",
-			link: "?/pages/awards/intel",
+			link: "?/awards/intel",
 			title: "Intel IoT Hackathon",
 			date: "September 2014 &amp; 2015",
 			location: "Istanbul/Turkey",
@@ -147,7 +198,7 @@ const data = {
 		},
 		{
 			id: "tubitak",
-			link: "?/pages/awards/tubitak",
+			link: "?/awards/tubitak",
 			title: "TUBITAK Efficiency Challenge",
 			date: "2014 &amp; 2015",
 			location: "Izmit/Turkey",
@@ -158,43 +209,50 @@ const data = {
 	activities: [
 		{
 			id: "abbox",
-			link: "?/pages/volunteer/abbox",
+			link: "?/volunteer/abbox",
 			title: "Abbox 3D Printing",
 		},
 		{
 			id: "tedx",
-			link: "?/pages/volunteer/tedx",
+			link: "?/volunteer/tedx",
 			title: "TEDxBahcesehir",
 		},
 		{
 			id: "spark",
-			link: "?/pages/volunteer/spark",
+			link: "?/volunteer/spark",
 			title: "SparkGO",
 		},
 	]
-}
+};
 
 document.querySelector("div#experience").innerHTML += (data.experience.map(item => (`
 	<div class="timeline-item" id="${item.id}">
 		<div class="timeline-left">
-			<a class="timeline-icon icon-lg" href="${item.link}">
+			<a class="timeline-icon icon-lg" href="?/work/${item.id}">
 				<i class="icon icon-location"></i>
 			</a>
 		</div>
 		<div class="timeline-content">
-			<a href="${item.link}">${item.company}</a>
+			<a href="?/work/${item.id}">${item.company}</a>
 			<div class="tile">
 				<div class="tile-content">
-					<p class="tile-subtitle">${item.dates}, ${item.place}</p>
-					<p class="tile-title">${item.title}</p>
+					<p class="tile-title" id="title-${item.uuid}" >${item.title}</p>
+					<p class="tile-subtitle">
+						<span class="label" >${item.place}</span>
+						&horbar;
+						<span class="label label-secondary" >${item.dates}</span>
+					</p>
+					<blockquote class="${item?.description ? "" : "d-hide"}" id="description-${item.uuid}" >
+						${item?.description || "no desc"}
+					</blockquote>
 				</div>
 				<div class="tile-action">
-					<a class="btn" href="${item.link}" >${item.action}</a>
+					<a class="btn" href="?/work/${item.id}#" >${item?.action || "Details"}</a>
 				</div>
 			</div>
 		</div>
 	</div>
-`)).join("\n"))
+`)).join("\n"));
 
 document.querySelector("div#awards").innerHTML += (data.awards.map(item => (`
 	<div class="timeline-item" id="${item.id}">
@@ -216,7 +274,7 @@ document.querySelector("div#awards").innerHTML += (data.awards.map(item => (`
 			</div>
 		</div>
 	</div>
-`)).join("\n"))
+`)).join("\n"));
 
 document.querySelector("div#activities").innerHTML += (data.activities.map(item => (`
 	<div class="timeline-item" id="${item.id}">
@@ -229,8 +287,16 @@ document.querySelector("div#activities").innerHTML += (data.activities.map(item 
 			<a href="${item.link}">${item.title}</a>
 		</div>
 	</div>
-`)).join("\n"))
+`)).join("\n"));
 
+if (true) [ "description", "title" ].forEach(
+	prop => data.experience.map(
+		item => window.md.postMessage({
+			target: `#${prop}-${item.uuid}`,
+			text: item[prop],
+		})
+	)
+);
 
 </script>
 

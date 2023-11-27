@@ -23,7 +23,7 @@
 			<!--section class="navbar-section">
 				<a href="?#" class="navbar-brand text-primary" >sec title</a>
 			</section-->
-			<section class="navbar-section btns d-flex">
+			<section class="navbar-section btns d-inline-flex clearfix">
 				<!--a class="btn btn-md btn-link" href=https://mert.akeng.in >
 					<img
 						async=on decoding=async loading=lazy class="icon icon-md"
@@ -34,12 +34,12 @@
 						async=on decoding=async loading=lazy class="icon icon-md"
 						src=https://akveo.github.io/eva-icons/fill/svg/edit.svg />
 				</a-->
-				<a class="btn btn-md btn-link" href=mailto:mert@akeng.in >
+				<a class="btn btn-md btn-link" href="mailto:akeng.in@mert" id=email >
 					<img
 						async=on decoding=async loading=lazy class="icon icon-md"
 						src=https://akveo.github.io/eva-icons/fill/svg/email.svg />
 				</a>
-				<a class="btn btn-md btn-link" href=tel:+491744010738 >
+				<a class="btn btn-md btn-link" href="tel:38 07 401 174 +49" id=telno >
 					<img
 						async=on decoding=async loading=lazy class="icon icon-md"
 						src=https://akveo.github.io/eva-icons/fill/svg/phone.svg />
@@ -59,6 +59,9 @@
 						async=on decoding=async loading=lazy class="icon icon-md"
 						src=https://akveo.github.io/eva-icons/fill/svg/linkedin.svg />
 				</a>
+				<button id=top onclick="window.scrollTo({ top: 0, left: 0, behavior: 'smooth', });" class="btn btn-primary btn-action btn-sm s-circle d-hide">
+					<i class="icon icon-arrow-up"></i>
+				</button>
 			</section>
 		</header>
 		<div id="sidebar" class="docs-sidebar off-canvas-sidebar">
@@ -75,7 +78,7 @@
 				<div class="container p-centered" >
 					<div class="tile tile-centered" >
 						<div class="tile-icon" >
-							  <i class="icon icon-bookmark centered" ></i>
+							  <i class="icon icon-link centered" ></i>
 						 </div>
 						 <div class="tile-content" >
 							<ul class="breadcrumb" id="path" ></ul>
@@ -83,10 +86,19 @@
 					</div>
 					<h3 id=title class="s-title">&nbsp;</h3>
 					<main id=content class="columns p-centered loading" ></main>
+					<!--<div class="toast float-left">asdasd<button class="btn btn-clear float-right" ></div>-->
 				</div>
 			</div>
 		</div>
 	</div>
+	<script async defer >
+		function fixHref(element, prefix = "?", delim = "?") {
+			element.href = `${prefix}:${element.href.split(":")[1].split(delim).reverse().join(delim)}`;
+		}
+		// super epic anti bot algorithm
+		fixHref(document.querySelector("a#telno"), "tel",    " ");
+		fixHref(document.querySelector("a#email"), "mailto", "@");
+	</script>
 	<script async defer >
 		window.Papercups = {
 			config: {
@@ -116,9 +128,9 @@
 			}
 		}
 	</script>
-	<script async defer src="https://js.sentry-cdn.com/52fb743e829b4d2dbb788e8d49a38d5c.min.js" crossorigin="anonymous" ></script>
-	<!-- <script async defer src="https://app.papercups.io/storytime.js" ></script> -->
-	<script async defer src="https://app.papercups.io/widget.js" ></script>
 	<script async defer src="./script.js" ></script>
+	<script async defer src="https://js.sentry-cdn.com/52fb743e829b4d2dbb788e8d49a38d5c.min.js" crossorigin="anonymous" ></script>
+	<!--<script async defer src="https://app.papercups.io/storytime.js" ></script>-->
+	<script async defer src="https://app.papercups.io/widget.js"    ></script>
 </body>
 </html>

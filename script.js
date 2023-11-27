@@ -207,7 +207,8 @@ function onLoad(event) {
 		let title = element.querySelector("title")
 		if(title && title.innerText) {
 			document.querySelector("h3.s-title#title").innerHTML = title.innerHTML
-			document.title = `${title.innerText} -- Mert Akengin`
+			document.querySelector("ul.breadcrumb#path #title").innerHTML = title.innerHTML
+			document.title = `${title.innerText} | Mert Akengin`
 		}
 		element.classList.remove("loading")
 		//window.location.hash = `id--${window.location.hash.substring(1)}`

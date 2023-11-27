@@ -43,6 +43,20 @@ main#content .tile .tile-title {
 	line-height: 1.6rem;
 	margin: auto;
 }
+main#content .tile p {
+	margin: auto;
+}
+
+main#content .tile ul {
+	margin: auto;
+	margin-left: .5rem;
+	list-style-type: circle;
+}
+
+main#content .tile blockquote {
+	margin: auto;
+	padding: .3rem .6rem;
+}
 
 main#content img {
 	margin: 0;

@@ -74,12 +74,25 @@ function loadDocument(worker, extension = null) {
 		target += "home"
 	}
 
-	let breadcrumbs = document.querySelector("#path")
+	target = target.replace(/[/]+/g, "/")
+
+	let breadcrumbs = document.querySelector("ul.breadcrumb#path")
 	if (breadcrumbs) {
-		breadcrumbs.innerHTML = target.split("/").slice(2).filter(path => path).map(
-			(path, index, paths) => `<li class="breadcrumb-item"><a href="?${paths.slice(0, index + 1).join("/")}">${path}</a></li>`
+		breadcrumbs.innerHTML = (
+			`<li class="breadcrumb-item"></li>\n`
+			+ target.split("/").slice(2).filter(path => path).map(
+				(path, index, paths) => (`
+					<li class="breadcrumb-item">
+						<a class="chip" href="?${paths.slice(0, index + 1).join("/")}" >
+							${index+1 == paths.length ? "<span id=title >" + path + "</span>" : path}
+						</a>
+					</li>
+				`)
 		).join("\n")
+		)
 	}
+
+	_currentPage = target
 
 	return worker.loader.postMessage({
 		extension: extension,

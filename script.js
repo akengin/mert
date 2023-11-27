@@ -263,6 +263,22 @@ function onLoad(event) {
 		const nextExtensionIndex = extensions.indexOf(extension) + 1
 		const nextExtension = extensions[nextExtensionIndex]
 
+		if (nextExtensionIndex >= extensions.length) {
+			return parser.postMessage({
+				target: data.element,
+				text: (`\n<title>An error occured</title>\n`
+					+ `
+						${data.http.status} &horbar; ${data.http.statusText}
+
+						---
+					`.split("\n").map(line => line.trim()).join("\n")
+					+ `![${data.http.status}](//http.cat/${data.http.status}.jpg)`
+					+ `\n#### Error Details:\n`
+					+ `\n~~~\n${JSON.stringify(data, null, 4)}\n~~~\n`
+				),
+			})
+		}
+
 		if (true
 			&& data.http
 			&& !data.http.ok

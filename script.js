@@ -62,6 +62,13 @@ function loadDocument(worker, extension = null) {
 		target += "home"
 	}
 
+	let breadcrumbs = document.querySelector("#path")
+	if (breadcrumbs) {
+		breadcrumbs.innerHTML = target.split("/").slice(2).filter(path => path).map(
+			(path, index, paths) => `<li class="breadcrumb-item"><a href="?${paths.slice(0, index + 1).join("/")}">${path}</a></li>`
+		).join("\n")
+	}
+
 	return worker.loader.postMessage({
 		extension: extension,
 		element: "main#content",

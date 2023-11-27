@@ -3,7 +3,7 @@
 
 /*
 importScripts("../markdown-it/dist/markdown-it.min.js")
-let useMarkdownit = function(e) {
+function useMarkdownit(e) {
 	return postMessage({
 		target: e.data.target,
 		html: markdownit({
@@ -17,7 +17,7 @@ let useMarkdownit = function(e) {
 */
 
 importScripts("../marked/marked.min.js")
-let useMarked = function(event) {
+function useMarked(event) {
 	if(!event.data.text) {
 		return console.warn("useMarked: `data.text` property is required;", event)
 	}
@@ -37,7 +37,14 @@ let useMarked = function(event) {
 	})
 }
 
-onmessage = function(e) {
-	console.debug(arguments)
-	return useMarked(e)
-}
+//export function onmessage(event) {
+//	console.debug("markdown.js/onmessage:", event, arguments)
+//	return useMarked(event)
+//}
+
+//onmessage = function(event) {
+//	console.debug("markdown.js/onmessage:", event, arguments)
+//	return useMarked(event)
+//}
+
+onmessage = useMarked

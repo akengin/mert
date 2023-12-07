@@ -66,7 +66,7 @@ function developerMode(hostname) {
 	}
 	return
 }
-function loadDocument(worker, extension = ".md") {
+function loadDocument(workers, extension = ".md") {
 
 	const directory = "/pages/"
 
@@ -104,7 +104,7 @@ function loadDocument(worker, extension = ".md") {
 
 	_currentPage = target
 
-	return worker.loader.postMessage({
+	return workers.loader.postMessage({
 		extension: extension,
 		element: "main#content",
 		file: target,
@@ -227,18 +227,32 @@ function onLoad(event) {
 		element.classList.remove("loading")
 		//window.location.hash = `id--${window.location.hash.substring(1)}`
 		//window.location.hash = ""
-		element.querySelectorAll("script").forEach(script => {
-			if(script.src) {
-				fetch(script.src)
+		element.querySelectorAll("script").forEach(async script => {
+			if (script.src) {
+				return script.src
+				await fetch(script.src, {
+					mode: "no-cors",
+				})
 					.then(source => source.text())
 					.then(text => new Function(text).call(window))
-					.catch(console.error)
+					.catch(async error => {
+						console.warn("parser/makeWorker/markdown.js/callback/script/forEach/error:", error)
+						console.log("Appending a script element to the body...")
+						let element = document.createElement("script");
+						element.src = script.src
+						element.type = "application/javascript"
+						element.async = true
+						element.defer = true
+						element.crossOrigin = "anonymous"
+						let result = document.body.append(element)
+						return result
+					})
 			}
 			if(script.text) {
-				new Function(script.text).call(window)
+				return new Function(script.text).call(window)
 			}
-			window.mrt = script
-			return console.log(script)
+			console.log("parser/makeWorker/markdown.js/callback/script/forEach:", script, "[has no executable]")
+			return null
 		})
 
 		if (loader)

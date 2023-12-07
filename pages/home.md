@@ -265,7 +265,7 @@ document.querySelector("div#awards").innerHTML += (data.awards.map(item => (`
 	<div class="timeline-item" id="${item.id}">
 		<div class="timeline-left">
 			<a class="timeline-icon icon-lg" href="${item.link}">
-				<i class="icon icon-check"></i>
+				<i class="icon icon-flag"></i>
 			</a>
 		</div>
 		<div class="timeline-content">
@@ -287,7 +287,7 @@ document.querySelector("div#activities").innerHTML += (data.activities.map(item 
 	<div class="timeline-item" id="${item.id}">
 		<div class="timeline-left">
 			<a class="timeline-icon icon-lg" href="${item.link}">
-				<i class="icon icon-flag"></i>
+				<i class="icon icon-person"></i>
 			</a>
 		</div>
 		<div class="timeline-content">

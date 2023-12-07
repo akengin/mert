@@ -1,11 +1,16 @@
 
 <title>Mert Akengin</title>
 
-**_BSc. Software Engineer, <span id=yoe >8</span> years of experience_**
+---
 
-A passionate, curious and automation driven Software Engineer.
+<blockquote id="" class="text-italic text-muted text-large" style="text-indent: 0rem;" >
 
+**BSc. Software Engineer, <span id=yoe >8</span> years of experience**
+A passionate, curious and automation driven software engineer.
 I strive to improve reliability, scalability and maintainability.
+
+</blockquote>
+
 
 <script async defer >
 
@@ -229,18 +234,20 @@ document.querySelector("div#experience").innerHTML += (data.experience.map(item 
 	<div class="timeline-item" id="${item.id}">
 		<div class="timeline-left">
 			<a class="timeline-icon icon-lg" href="?/work/${item.id}">
-				<i class="icon icon-location"></i>
+				<i class="icon icon-check"></i>
 			</a>
 		</div>
 		<div class="timeline-content">
 			<a href="?/work/${item.id}">${item.company}</a>
 			<div class="tile">
-				<div class="tile-content">
+				<div class="tile-content" >
 					<p class="tile-title" id="title-${item.uuid}" >${item.title}</p>
 					<p class="tile-subtitle">
-						<span class="label" >${item.place}</span>
+						<i class="text-gray d-inline icon-sm icon icon-location"></i>
+						<span class="d-inline label" >${item.place}</span>
 						&horbar;
-						<span class="label label-secondary" >${item.dates}</span>
+						<i class="text-gray d-inline icon-sm icon icon-time"></i>
+						<span class="d-inline label label-secondary" >${item.dates}</span>
 					</p>
 					<blockquote class="${item?.description ? "" : "d-hide"}" id="description-${item.uuid}" >
 						${item?.description || "no desc"}

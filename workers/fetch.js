@@ -11,9 +11,9 @@ async function reply(response) {
 }
 
 async function makeCache(key, callback, actual, ...args) {
-	let cache = await caches.open("makengin/fetch/v0")
 	try {
-		if (!(await cache.match(key))) {
+		let cache = await caches.open("makengin/fetch/v0")
+		if (!(await cache.match(key)) && !self.origin.match(/localhost/gi)) {
 			let result = await cache.add(key)
 			console.debug("makeCache/match/add:", result)
 		}

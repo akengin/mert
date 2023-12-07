@@ -35,8 +35,20 @@ main#content > .timeline > .timeline-item .timeline-icon::before {
 }
 
 main#content > .timeline > .timeline-item > .timeline-content::first-line {
-	font-weight: 600;
+	font-weight: bold;
 }
+
+main#content > h2 + p {
+	text-indent: 2ch;
+}
+
+main#content > h3 + p {
+	text-indent: 1ch;
+}
+
+main#content h2 + p::first-letter {
+	font-size: 100%;
+ }
 
 main#content .tile .tile-subtitle,
 main#content .tile .tile-title {
@@ -44,6 +56,7 @@ main#content .tile .tile-title {
 	margin: auto;
 }
 main#content .tile p {
+	/*text-indent: 0;*/
 	margin: auto;
 }
 
@@ -56,6 +69,10 @@ main#content .tile ul {
 main#content .tile blockquote {
 	margin: auto;
 	padding: .3rem .6rem;
+}
+
+main#content .timeline .timeline-item .timeline-content .tile .tile-content .tile-subtitle .d-inline {
+	vertical-align: middle !important;
 }
 
 main#content img {

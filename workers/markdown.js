@@ -17,13 +17,16 @@ function useMarkdownit(e) {
 */
 
 importScripts("../marked/marked.min.js")
-function useMarked(event) {
+async function useMarked(event) {
 	if(!event.data.text) {
 		return console.warn("useMarked: `data.text` property is required;", event)
 	}
-	return postMessage({
+	return await postMessage({
 		target: event.data.target,
 		html: marked(event.data.text, {
+			async: true,
+			xhtml: true,
+			sanitize: false,
 			smartLists: true,
 			smartypants: true,
 			headerPrefix: "",

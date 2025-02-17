@@ -6,7 +6,7 @@
 
 <script async defer >
 
-const apiUrl = "https://notion-gw-jtojjrmgya-ez.a.run.app"
+const apiUrl = `https://notion.run.gcp.cloud.${window.location.host}`
 
 async function blog(parameters, callback) {
 	return await fetch(`${apiUrl}/v1/search`, {
@@ -15,9 +15,7 @@ async function blog(parameters, callback) {
 			page_size: 100,
 			...parameters,
 		}),
-		headers: {
-			//"Notion-Version": "2022-06-28",
-		},
+		headers: {},
 	})
 	.then(resp => resp.json())
 	.then(json => {

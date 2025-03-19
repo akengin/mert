@@ -1,14 +1,20 @@
 
 <title>Mert's Blog</title>
-<meta name="description" content="Mert's blog - index" />
+<meta name="description" content="Mert's blog" />
 
 <div id=blog-index class="loading column col-12" ></div>
 
 <script async defer >
 
-const apiUrl = `https://notion.run.gcp.cloud.${window.location.host}`
+const mainDomain = `mert.akeng.in`;
+const apiPrefix = `notion.run.gcp.cloud`;
+const apiUrl = (window.location.hostname === `localhost`
+	? `https://${apiPrefix}.${mainDomain}`
+	: `https://${apiPrefix}.${window.location.host}`
+);
 
 async function blog(parameters, callback) {
+	const title = `Mert's Blog`
 	return await fetch(`${apiUrl}/v1/search`, {
 		method: "POST",
 		data: JSON.stringify({
@@ -21,8 +27,8 @@ async function blog(parameters, callback) {
 	.then(json => {
 		let workspaces = json.results.filter(result => result.parent.type === "workspace")
 		let pages      = json.results.filter(result => result.parent.type === "page_id")
-		let blogws     = workspaces.filter(ws => ws?.properties?.title?.title[0]?.plain_text === `Mert's Blog`)
-		return pages.filter(page => page?.parent?.page_id === blogws[0]?.id)
+		let blog_ws    = workspaces.filter(ws => ws?.properties?.title?.title[0]?.plain_text === title)
+		return pages.filter(page => page?.parent?.page_id === blog_ws[0]?.id)
 	})
 	.then(pages => pages.map(page => ({
 		id:   page?.id                                       || "no-id",
@@ -62,10 +68,11 @@ blog({
 			</div>
 		</div>
 	</a>
-`)).join("\n")).then(text => withSelf(document.querySelector("#blog-index"), function() {
+`)).join("\n")).then(text => (function() {
+	if (!this) return;
 	this.innerHTML = text
 	this.classList.remove("loading")
 	return
-}))
+}).call(document.querySelector("#blog-index")))
 
 </script>

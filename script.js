@@ -25,11 +25,6 @@ let _scroll = {
 
 }
 
-
-function withSelf(self, callback) {
-	return callback.call(self)
-}
-
 function makeWorker(script, callback) {
 
 	if ("Worker" in window && window.Worker) {

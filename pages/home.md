@@ -1,12 +1,13 @@
 
-<title>Mert Akengin</title>
+<title>Mert Akengin | DevOps Engineer</title>
 
 ---
 
-<blockquote id="" class="text-italic text-muted text-large" style="text-indent: 0rem;" >
+<blockquote id="" class="text-italic text-muted text-large" >
 
-**BSc. Software Engineer, <span id=yoe >8</span> years of experience**
-A passionate, curious and automation driven software engineer.
+**B.Eng./B.Sc. Software Engineer, with <span id=yoe >9</span> years of
+experience**. \
+A passionate, curious, and automation driven software engineer.
 I strive to improve reliability, scalability and maintainability.
 
 </blockquote>
@@ -435,6 +436,13 @@ Arduino, ESP-IDF, DJango, Boto3/AWS, Spring-Boot, PySerial, CherryPy, NodeJS<br 
 <div
 	class="calendly-inline-widget"
 	data-url="https://calendly.com/mert-akengin?hide_landing_page_details=1&hide_gdpr_banner=1"
-	style="min-width:320px;height:1280px;"
+	data-resize="true"
+	style="min-width:320px; height:1280px;"
 	></div>
-<script async defer src="https://assets.calendly.com/assets/external/widget.js" crossorigin="anonymous" ></script>
+<script async defer src="https://assets.calendly.com/assets/external/widget.js" crossorigin="anonymous" mode=eval >
+	Calendly.initInlineWidget({
+		url: `https://calendly.com/mert-akengin`,
+		parentElement: document.querySelector(`.calendly-inline-widget`),
+		resize: true,
+	})
+</script>

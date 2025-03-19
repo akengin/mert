@@ -33,7 +33,7 @@ async function useMarked(event) {
 			headerIds: true,
 			baseUrl: "?/",
 			silent: false,
-			breaks: true,
+			breaks: false,
 			mangle: true,
 			gfm: true,
 		}),

@@ -15,9 +15,9 @@ loadLogo(document.querySelector("code"))
 
 <div class="accordion-body">
 
-- [Home](home)
-- [Blog](blog)
-- [Photos](//unsplash.com/spacelatte)
+- 🏠 [Home](home)
+- 📝 [Blog](blog)
+- 📷 [Photos](//unsplash.com/spacelatte)
 
 </div>
 

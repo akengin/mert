@@ -95,42 +95,16 @@
 		function fixHref(element, prefix = "?", delim = "?") {
 			element.href = `${prefix}:${element.href.split(":")[1].split(delim).reverse().join(delim)}`;
 		}
-		// super epic anti bot algorithm
+
+		// super epic anti bot defender algorithm
 		fixHref(document.querySelector("a#telno"), "tel",    " ");
 		fixHref(document.querySelector("a#email"), "mailto", "@");
-	</script>
-	<script async defer >
-		window.Papercups = {
-			config: {
-				accountId: "b04c2648-2ca5-403f-8673-0e90cc1281da",
-				title: "Welcome!",
-				subtitle: "Hello, you can chat with me or leave me a note!",
-				primaryColor: "#5755d9",
-				greeting: `Hello! You can use this area to message me. I'll see messages when I'm online...`,
-				awayMessage: "Sorry, I am not available at the moment.",
-				newMessagePlaceholder: "Start typing...",
-				showAgentAvailability: true,
-				agentAvailableText: "I am online right now!",
-				agentUnavailableText: "I am away at the moment.",
-				requireEmailUpfront: true,
-				iconVariant: "filled",
-				baseUrl: "https://app.papercups.io",
-			},
-		}
+
 		if(window.location.hostname == "localhost") {
-			window.Papercups.config.customer = {
-				name: "john",
-				email: "user@mail.com",
-				external_id: window.location.host,
-				metadata: {
-					path: window.location.search,
-				},
-			}
+			// development mode specific code
 		}
 	</script>
 	<script async defer src="./script.js" ></script>
 	<script async defer src="https://js.sentry-cdn.com/52fb743e829b4d2dbb788e8d49a38d5c.min.js" crossorigin="anonymous" ></script>
-	<!--<script async defer src="https://app.papercups.io/storytime.js" ></script>-->
-	<script async defer src="https://app.papercups.io/widget.js"    ></script>
 </body>
 </html>

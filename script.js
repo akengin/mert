@@ -13,7 +13,7 @@ let _scroll = {
 	save: function (event, storage = _storage) {
 		let cls = "d-hide"
 		let btn = document.querySelector("button#top")
-		let top = document.querySelector("h3.s-title#title").getBoundingClientRect()
+		let top = document.querySelector(".s-title#title").getBoundingClientRect()
 		let pos = [window.scrollX, window.scrollY, ]
 		if (btn && (pos[0] > (top.y + top.height) || pos[1] > (top.y + top.height))) {
 			btn.classList.remove(cls)
@@ -122,7 +122,7 @@ function onHashChange(event) {
 
 		let docRect = document.body.getBoundingClientRect()
 		let section = document.querySelector(window.location.hash.replace("~", ""))
-		let titleRect = document.querySelector("h3.s-title#title").getBoundingClientRect()
+		let titleRect = document.querySelector(".s-title#title").getBoundingClientRect()
 
 		if (section && section instanceof HTMLHeadingElement) {
 
@@ -220,7 +220,7 @@ function onLoad(event) {
 		element.innerHTML = e.data.html
 		let title = element.querySelector("title")
 		if(title && title.innerText) {
-			document.querySelector("h3.s-title#title").innerHTML = title.innerHTML
+			document.querySelector(".s-title#title").innerHTML = title.innerHTML
 			document.querySelector("ul.breadcrumb#path #title").innerHTML = title.innerHTML
 			document.title = `${title.innerText} | Mert Akengin`
 		}

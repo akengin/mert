@@ -139,6 +139,14 @@ h4[id]:target {
 .s-title#title:before {
 	width: 100vw;
 }
+.s-title#title {
+	font-size: 1.5rem;
+}
+.s-title#title::before {
+	backdrop-filter: blur(8px);
+	-webkit-backdrop-filter: blur(8px);
+	background-color: rgba(255, 255, 255, .5);
+}
 
 .blink::after {
 	content: "";
@@ -156,6 +164,16 @@ h4[id]:target {
 	0% { opacity: 1.0; }
 	50% { opacity: 0.0; }
 	100% { opacity: 1.0; }
+}
+
+@media (max-width: 960px) {
+	body #path-container {
+		margin-top: 4rem;
+		display: none;
+	}
+	.s-title#title {
+		padding-top: 5rem;
+	}
 }
 
 @media (min-width: 960px) {

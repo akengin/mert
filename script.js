@@ -111,7 +111,7 @@ function onHashChange(event) {
 	if(event) event.preventDefault()
 
 	let absolute = true
-	let offsetMultiplier = 1.1
+	let offsetMultiplier = 1.0
 
 	if (window.location.hash.substring(1)) {
 
@@ -157,7 +157,7 @@ function onHashChange(event) {
 async function loadSectionAsync(element, loader) {
 	return element.querySelectorAll("[data-load]").forEach(async function(e, i) {
 
-		console.debug("element.querySelectorAll/[data-load]/forEach/callback:", e, i, arguments)
+		console.debug("loadSectionAsync: element.querySelectorAll/[data-load]/forEach/callback:", e, i, arguments)
 
 		e.dataset.identity = "dl-" + (
 			self.crypto.randomUUID().replaceAll("", "")
@@ -168,6 +168,7 @@ async function loadSectionAsync(element, loader) {
 		e.classList.add("loading")
 
 		if (loader) {
+			console.debug("loadSectionAsync: Using loader:", loader, "with identity:", e.dataset.identity)
 			return loader.postMessage({
 				extension: null,
 				element: `[data-identity="${e.dataset.identity}"]`,
@@ -207,6 +208,59 @@ function onLoad(event) {
 			.catch(error => console.error("onLoad/serviceWorker/error:",  error))
 	}
 
+	async function handleIndirectJs(script) {
+
+		let evaluator = (text) => console.log("handleIndirectJs/evaluator/text:", text)
+		switch(script.getAttribute("mode") ?? "call") {
+			case "eval":
+				evaluator = (text) => window?.eval?.call(window, text)
+				break;
+			case "call":
+				evaluator = (text) => new Function(text).call(window)
+				break;
+			default:
+				console.warn("Cannot determine evaluator for:", script)
+				break;
+		}
+
+		if (script.src) {
+			let scriptElement = document.createElement("script");
+			scriptElement.src = script.src
+			scriptElement.type = "application/javascript"
+			scriptElement.async = true
+			scriptElement.defer = true
+			scriptElement.crossOrigin = "anonymous"
+			let result = document.body.appendChild(scriptElement)
+			console.warn(result)
+			/*
+			await fetch(script.src, {
+				mode: "no-cors",
+			})
+				.then(source => source.text())
+				.then(text => evaluator(text ? text : `throw Error("No content")`))
+				.catch(async error => {
+					console.warn("parser/makeWorker/markdown.js/callback/script/forEach/error:", error)
+					console.log("Appending a script element to the body...")
+					let scriptElement = document.createElement("script");
+					scriptElement.src = script.src
+					scriptElement.type = "application/javascript"
+					scriptElement.async = true
+					scriptElement.defer = true
+					scriptElement.crossOrigin = "anonymous"
+					let result = document.body.appendChild(scriptElement)
+					return result
+				})
+			*/
+		}
+
+		if(script.text) {
+			evaluator.call(window, script.text)
+		}
+
+		console.log("parser/makeWorker/markdown.js/callback/script/forEach:", script, "has finished init")
+		return null
+	}
+
 	let parser = makeWorker("./workers/markdown.js", function(e) {
 		console.debug("parser/makeWorker/markdown.js:", arguments)
 		let element = e.data.target
@@ -222,38 +276,30 @@ function onLoad(event) {
 		element.classList.remove("loading")
 		//window.location.hash = `id--${window.location.hash.substring(1)}`
 		//window.location.hash = ""
-		element.querySelectorAll("script").forEach(async script => {
-			if (script.src) {
-				return script.src
-				await fetch(script.src, {
-					mode: "no-cors",
-				})
-					.then(source => source.text())
-					.then(text => new Function(text).call(window))
-					.catch(async error => {
-						console.warn("parser/makeWorker/markdown.js/callback/script/forEach/error:", error)
-						console.log("Appending a script element to the body...")
-						let element = document.createElement("script");
-						element.src = script.src
-						element.type = "application/javascript"
-						element.async = true
-						element.defer = true
-						element.crossOrigin = "anonymous"
-						let result = document.body.append(element)
-						return result
-					})
-			}
-			if(script.text) {
-				return new Function(script.text).call(window)
-			}
-			console.log("parser/makeWorker/markdown.js/callback/script/forEach:", script, "[has no executable]")
-			return null
-		})
+		element.querySelectorAll("script").forEach(script => handleIndirectJs(script))
 
-		if (loader)
+		if (element?.onload) {
+			console.debug("parser/makeWorker/loader/onload", "element contains onload hook:", element?.onload);
+			let onLoadHookResult = null;
+			if (element.onload instanceof Function) {
+				try {
+					onLoadHookResult = element.onload(e)
+				} catch(error) {
+					console.error("Error while executing `onload` hook:", error);
+				}
+			} else {
+				onLoadHookResult = new Function(element.onload).call(this, e, element)
+			}
+			console.debug("parser/makeWorker/loader/onload/result:", onLoadHookResult)
+		}
+
+		if (loader) {
+			console.debug("parser/makeWorker/loader/loadSectionAsync:", "loader exists:", loader)
 			loadSectionAsync(element, loader)
-		else
+		} else {
+			console.debug("parser/makeWorker/loader/loadSectionAsync:", "loader is missing:", loader)
 			loadSectionAsync(element, null)
+		}
 
 		onHashChange(null)
 		return

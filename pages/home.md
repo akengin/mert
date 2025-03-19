@@ -52,29 +52,31 @@ const data = {
 		{
 			id: "amazon",
 			company: "Amazon Europe S.à r.l.",
-			description: null?.split("\n").map(line => line.trim()).join("\n"),
-			title: "_DevOps Engineer_, Amazon Transportation Services (ATS)",
+			description: `
+				- 2025: Attending DevCon in Seattle.
+				- 2024: Built LLM (GenAI) enabled tools and integrated with internal systems.
+				- 2023: Implemented incident detection and root-cause locating system.
+				- 2022: Implemented automations to onboard carriers faster.
+			`?.split("\n").map(line => line.trim()).join("\n"),
+			title: "Systems Development Engineer, Amazon Transportation Services (ATS), _REALM DevOps_",
 			dates: `Current, ${yoeCurrent.year.toFixed(0)} years ${monthString}`,
 			place: "Luxembourg",
-			uuid: `uuid-${genUUID()}`,
 		},
 		{
 			id: "wamo",
 			company: "WAMO Ltd.",
-			description: null,
+			description: `Built cost-effective, asynchronous, and distributed APIs, infrastructure, and solutions on AWS.`,
 			title: "Cloud Systems Engineer",
 			dates: "1 year 9 months",
 			place: "Remote (EU)",
-			uuid: `uuid-${genUUID()}`,
 		},
 		{
 			id: "mubi",
 			company: "MUBI Inc.",
 			description: `Worked on cloud cost optimizations, in-house CDN, and video encoding systems.`,
-			title: "DevOps Engineer",
+			title: "DevOps Engineer (Cloud & CDN infrastructure)",
 			dates: "9 months",
 			place: "Berlin",
-			uuid: `uuid-${genUUID()}`,
 		},
 		{
 			id: "fincompare",
@@ -83,7 +85,6 @@ const data = {
 			title: "Site Reliability Engineer (SRE)",
 			dates: "1 year",
 			place: "Berlin",
-			uuid: `uuid-${genUUID()}`,
 		},
 		{
 			id: "iyzico",
@@ -92,7 +93,6 @@ const data = {
 			title: "Systems Engineer, DevOps",
 			dates: "2 years 3 months",
 			place: "Istanbul",
-			uuid: `uuid-${genUUID()}`,
 		},
 		{
 			id: "iven",
@@ -101,7 +101,6 @@ const data = {
 			title: "Software Engineer",
 			dates: "2 years",
 			place: "Istanbul",
-			uuid: `uuid-${genUUID()}`,
 		},
 		{
 			id: "tatu",
@@ -110,7 +109,6 @@ const data = {
 			title: "Software Developer",
 			dates: "1 year",
 			place: "Istanbul",
-			uuid: `uuid-${genUUID()}`,
 		},
 		{
 			id: "lostar",
@@ -119,7 +117,6 @@ const data = {
 			title: "Intern, Software Development and Information Security Products",
 			dates: "6 months",
 			place: "Istanbul",
-			uuid: `uuid-${genUUID()}`,
 		},
 	],
 	awards: [
@@ -229,6 +226,11 @@ const data = {
 		},
 	]
 };
+
+data.experience.forEach(item => {
+	item.uuid = `uuid-${genUUID()}`;
+	return
+})
 
 document.querySelector("div#experience").innerHTML += (data.experience.map(item => (`
 	<div class="timeline-item" id="${item.id}">

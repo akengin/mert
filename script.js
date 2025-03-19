@@ -5,9 +5,9 @@ let _currentPage = null
 let _storage = sessionStorage
 let _scroll = {
 
-	load: function (event, storage = _storage) {
+	load: function (event, storage = _storage, x_axis = false) {
 		let data = JSON.parse(storage.getItem(`scroll:${_currentPage}`) || "[0,0]")
-		return window.scrollTo(data[0], data[1])
+		return window.scrollTo((x_axis ? 1 : 0) * data[0], data[1])
 	},
 
 	save: function (event, storage = _storage) {

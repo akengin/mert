@@ -5,7 +5,7 @@
 
 <blockquote id="" class="text-italic text-muted text-large" >
 
-**B.Eng./B.Sc. Software Engineer, with <span id=yoe >9</span> years of
+**B.Eng./B.Sc. Software Engineer, with <span id=yoe >10</span> years of
 experience**. \
 A passionate, curious, and automation driven software engineer.
 I strive to improve reliability, scalability and maintainability.
@@ -26,7 +26,7 @@ function genUUID() {
 	return Array(32).fill(0).map(x => Math.random().toString(36).charAt(2)).join("")
 }
 
-const yoeLastDiff = (new Date() - new Date(2021, 11 - 1)); // month is 0-indexed
+const yoeLastDiff = (new Date() - new Date(2026, 03 - 1)); // month is 0-indexed
 const yoeCurrent = {
 	year: (yoeLastDiff / 31_536_000_000),
 	month: new Date(yoeLastDiff).getMonth(),
@@ -51,23 +51,31 @@ document.querySelector("#yoe").innerHTML = `${(6.75 + yoeCurrent.year).toFixed(0
 const data = {
 	experience: [
 		{
+			id: "post",
+			company: "POST Luxembourg",
+			description: ``,
+			title: "DevOps Engineer",
+			dates: `Current, since March 2026, ${yoeCurrent.year.toFixed(0)} years ${monthString}`,
+			place: "Luxembourg",			
+		},
+		{
 			id: "amazon",
 			company: "Amazon Europe S.à r.l.",
 			description: `
-				- 2025: Attending DevCon in Seattle.
+				- 2025: Various contributions to Amazon-wide projects (Brazil, MCM, Amazon Linux 2023, as well as internal MySQL)
 				- 2024: Built LLM (GenAI) enabled tools and integrated with internal systems.
 				- 2023: Implemented incident detection and root-cause locating system.
 				- 2022: Implemented automations to onboard carriers faster.
 			`?.split("\n").map(line => line.trim()).join("\n"),
-			title: "Systems Development Engineer, Amazon Transportation Services (ATS), _REALM DevOps_",
-			dates: `Current, ${yoeCurrent.year.toFixed(0)} years ${monthString}`,
+			title: "Systems Development Engineer II, Transportation/Logistics",
+			dates: `4 years`,
 			place: "Luxembourg",
 		},
 		{
 			id: "wamo",
 			company: "WAMO Ltd.",
 			description: `Built cost-effective, asynchronous, and distributed APIs, infrastructure, and solutions on AWS.`,
-			title: "Cloud Systems Engineer",
+			title: "Cloud Systems Engineer - Contract",
 			dates: "1 year 9 months",
 			place: "Remote (EU)",
 		},
@@ -75,9 +83,9 @@ const data = {
 			id: "mubi",
 			company: "MUBI Inc.",
 			description: `Worked on cloud cost optimizations, in-house CDN, and video encoding systems.`,
-			title: "DevOps Engineer (Cloud & CDN infrastructure)",
+			title: "DevOps Engineer (Cloud & CDN infrastructure) - Contract",
 			dates: "9 months",
-			place: "Berlin",
+			place: "Berlin + Remote (UK)",
 		},
 		{
 			id: "fincompare",
@@ -91,14 +99,14 @@ const data = {
 			id: "iyzico",
 			company: "iyzico Payment Systems",
 			description: `Built a highly scalable infrastructure that's trusted by Amazon, Netflix, Aliexpress & more`,
-			title: "Systems Engineer, DevOps",
+			title: "Systems Engineer & DevOps",
 			dates: "2 years 3 months",
 			place: "Istanbul",
 		},
 		{
 			id: "iven",
 			company: "IVEN, IoT Cloud Solutions",
-			description: `Built real-time IoT cloud systems for Turkey's leading appliance manufacturers`,
+			description: `Built real-time IoT devices and cloud systems for Turkey's leading appliance manufacturers`,
 			title: "Software Engineer",
 			dates: "2 years",
 			place: "Istanbul",
@@ -115,7 +123,7 @@ const data = {
 			id: "lostar",
 			company: "Lostar InfoSec",
 			description: `Built a vulnerability detection and ticket management system`,
-			title: "Intern, Software Development and Information Security Products",
+			title: "Software Development and Information Security Products - Internship",
 			dates: "6 months",
 			place: "Istanbul",
 		},

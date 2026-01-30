@@ -26,7 +26,7 @@ function genUUID() {
 	return Array(32).fill(0).map(x => Math.random().toString(36).charAt(2)).join("")
 }
 
-const yoeLastDiff = (new Date() - new Date(2026, 03 - 1)); // month is 0-indexed
+const yoeLastDiff = (new Date() - new Date(2026, 3 - 1)); // month is 0-indexed
 const yoeCurrent = {
 	year: (yoeLastDiff / 31_536_000_000),
 	month: new Date(yoeLastDiff).getMonth(),

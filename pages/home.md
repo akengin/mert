@@ -55,7 +55,7 @@ const data = {
 			company: "POST Luxembourg",
 			description: ``,
 			title: "DevOps Engineer",
-			dates: `Current, since March 2026, ${yoeCurrent.year.toFixed(0)} years ${monthString}`,
+			dates: `Current, from/since March 2026`,
 			place: "Luxembourg",			
 		},
 		{

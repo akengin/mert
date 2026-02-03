@@ -8,15 +8,17 @@
   Permissions-Policy: accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()
 
 # Cache static assets
+# Using moderate cache duration (1 week) for main assets to allow for updates
 /style.css
-  Cache-Control: public, max-age=31536000, immutable
+  Cache-Control: public, max-age=604800, must-revalidate
 
 /script.js
-  Cache-Control: public, max-age=31536000, immutable
+  Cache-Control: public, max-age=604800, must-revalidate
 
 /workers/*
-  Cache-Control: public, max-age=31536000, immutable
+  Cache-Control: public, max-age=604800, must-revalidate
 
+# Vendor libraries can be cached longer (1 year) as they rarely change
 /icons/*
   Cache-Control: public, max-age=31536000, immutable
 

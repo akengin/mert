@@ -7,6 +7,10 @@ This repository is configured for deployment to Cloudflare Pages.
 - A Cloudflare account (free tier works)
 - GitHub account (for CI/CD integration)
 
+## Important Notes
+
+⚠️ **Git Submodules:** This project uses git submodules for dependencies (Spectre CSS, Marked.js, etc.). Cloudflare Pages automatically initializes submodules during deployment, so no special configuration is needed.
+
 ## Deployment Methods
 
 ### Method 1: Direct Deployment via Cloudflare Dashboard (Recommended)

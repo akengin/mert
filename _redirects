@@ -1,0 +1,4 @@
+# Cloudflare Pages URL redirects and rewrites
+
+# Handle SPA-style routing - preserve query parameters
+/* /index.html 200

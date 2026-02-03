@@ -1,0 +1,12 @@
+name = "mert"
+compatibility_date = "2024-01-01"
+
+# Cloudflare Pages configuration
+# This file can be used with Wrangler CLI for deployments
+
+[env.production]
+# Production environment settings
+# You can add environment-specific settings here
+
+# Note: For a static site like this one, most configuration is handled
+# through _headers and _redirects files rather than wrangler.toml

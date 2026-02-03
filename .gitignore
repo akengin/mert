@@ -10,3 +10,12 @@ websocketd
 fswatch
 *.dylib
 *.a
+
+# Cloudflare
+.wrangler/
+.dev.vars
+wrangler.toml.bak
+node_modules/
+dist/
+.env
+.env.local

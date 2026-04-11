@@ -3,16 +3,30 @@
 
 <script async defer mode=eval >
 
-async function loadLogo(elem) {
+async function fetchIpAddr() {
 	return await fetch("https://ipv4.wtfismyip.com/json")
 		.then(resp => resp.json())
-		.then(json => {
-			elem.innerHTML = `mert@${json.YourFuckingIPAddress}:~$ `
-			return elem
+		.then(json => `mert@${json.YourFuckingIPAddress}:~$ `)
+}
+	
+async function loadLogo(elem) {
+	let line = null;
+	const cache = JSON.parse(window.localStorage["logo"] || `null`)
+	if(cache && cache.last && Date.now() <= Date.parse(cache.last) + 86400000) {
+		line = cache.line
+	} else {
+		line = await fetchIpAddr()
+		window.localStorage["logo"] = JSON.stringify({
+			line: line,
+			last: new Date().toISOString(),
 		})
+	}
+	elem.innerHTML = line;
+	return elem;
 }
 
 loadLogo(document.querySelector("code"))
+//document.querySelector("a[href*=blog]")
 
 async function elementUnderline(query) {
 	return Array.from(document.querySelectorAll(query))
@@ -76,3 +90,8 @@ async function elementToggleOpenByPath(element, path) {
 	</summary>
 	<div class="accordion-body" data-load="../pages/volunteer.md" onload="elementToggleOpenByPath(this.parentElement, `/volunteer/`)" ></div>
 </details>
+
+
+<div style="opacity:0.0001" >
+	<img width=0 height=0 src="https://notion.run.gcp.cloud.mert.akeng.in/v1" loading=lazy fetchpriority=low />
+</div>

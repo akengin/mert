@@ -1,4 +1,5 @@
 
+- 🏤 [POST.lu](work/post)
 - 🏢 [Amazon](work/amazon)
 - 💳 [WAMO](work/wamo)
 - 🎬 [MUBI](work/mubi)

@@ -21,16 +21,14 @@ A HTTP/HTTPS debugger utility
 - [GitHub Repository](https://github.com/spacelatte/htrace.sh.git)
 - [DockerHub Repository](https://hub.docker.com/r/spacelatte/htrace.sh)
 
-[proxysql](https://github.com/spacelatte/proxysql.git),
+### Other contributions
+- [proxysql](https://github.com/spacelatte/proxysql.git) - MySQL/MariaDB query-aware load-balancer, containerized.
+- [termeter](https://github.com/spacelatte/termeter.git) - Draw charts on your terminal, containerized.
+- [datadash](https://github.com/spacelatte/datadash.git) - Terminal data visualizer, containerized.
+- [shhgit](https://github.com/spacelatte/shhgit.git) - Watch for credentials that are published to Git(Hub), containerized.
+- [CMAK](https://github.com/spacelatte/cmak.git) - Kafka cluster manager, containerized.
 
-[termeter](https://github.com/spacelatte/termeter.git),
-
-[datadash](https://github.com/spacelatte/datadash.git),
-
-[shhgit](https://github.com/spacelatte/shhgit.git),
-
-[CMAK](https://github.com/spacelatte/cmak.git)
-
+### Docker-native repositories
 - [atlassian-docker](https://github.com/spacelatte/atlassian-docker.git): Atlassian stack; Jira, Confluence, Crowd, Bitbucket and Bamboo
 - [static-docker](https://github.com/spacelatte/static-docker.git): Various statically compiled utilities inside containers
 - [kafka-docker](https://github.com/spacelatte/kafka-docker.git): Automatic Apache Kafka cluster coupled with Splunk monitoring

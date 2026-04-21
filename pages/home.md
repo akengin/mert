@@ -26,7 +26,7 @@ function genUUID() {
 	return Array(32).fill(0).map(x => Math.random().toString(36).charAt(2)).join("")
 }
 
-const yoeLastDiff = (new Date() - new Date(2026, 2 - 1)); // month is 0-indexed
+const yoeLastDiff = (new Date() - new Date(2026, 3 - 1)); // month is 0-indexed
 const yoeCurrent = {
 	year: (yoeLastDiff / 31_536_000_000),
 	month: new Date(yoeLastDiff).getMonth(),
@@ -53,20 +53,20 @@ const data = {
 		{
 			id: "post",
 			company: "POST Luxembourg",
-			description: ``,
+			description: `Managing/supporting Kubernetes (K8s) clusters and applications under ICT domain.`,
 			title: "DevOps Engineer",
-			dates: `Current, from/since March 2026`,
+			dates: `Current, since March 2026, ${yoeCurrent.year.toFixed(0)} years ${monthString}`,
 			place: "Luxembourg",			
 		},
 		{
 			id: "amazon",
 			company: "Amazon Europe S.à r.l.",
-			description: `
+			description: (`
 				- 2025: Various contributions to Amazon-wide projects (Brazil, MCM, Amazon Linux 2023, as well as internal MySQL)
 				- 2024: Built LLM (GenAI) enabled tools and integrated with internal systems.
 				- 2023: Implemented incident detection and root-cause locating system.
 				- 2022: Implemented automations to onboard carriers faster.
-			`?.split("\n").map(line => line.trim()).join("\n"),
+			`)?.split("\n").map(line => line.trim()).join("\n"),
 			title: "Systems Development Engineer II, Transportation/Logistics",
 			dates: `4 years`,
 			place: "Luxembourg",

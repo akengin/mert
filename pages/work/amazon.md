@@ -3,4 +3,4 @@
 
 **DevOps Engineer** at [amazon.com](https://amazon.com)
 <br />
-_December 2021 - Current_
+_February 2022 - February 2026_
